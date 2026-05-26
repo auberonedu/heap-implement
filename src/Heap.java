@@ -31,8 +31,15 @@ public class Heap {
         this.list = new ArrayList<>();
     }
 
-    public void addValue(){
-        
+    public void addValue(int value){
+        list.add(value);
+        int lastInd = list.size() - 1;
+        while(list.get(lastInd) < list.get((lastInd - 1) / 2)) {
+            int parentVal = list.get((lastInd - 1) / 2);
+            list.set((lastInd - 1) / 2, list.get(lastInd)); // set parent with last item added
+            list.set(lastInd, parentVal);  // set last item added value to parent value (swap)
+            lastInd = list.size() - 1;
+        }
     }
 
     public void pop() {
