@@ -46,4 +46,29 @@ public class Heap {
         return -1;
     }
 
+    // if parent is greater than 0, then return the parent of the given index.
+    private int parent(int index) {
+        int parent = (index - 1) / 2;
+        if (parent >= 0) {
+            return parent;
+        }
+        return -1;
+    }
+
+    public void add(int num) {
+        heapArray.add(num);
+        int numLocation = heapArray.size() - 1;
+        
+        while(num > parent(numLocation)) {
+            int parentLocation = parent(numLocation);
+            int swapParent = heapArray.get(parentLocation);
+            int swapChild = heapArray.get(numLocation);
+            
+            heapArray.set(numLocation, swapParent);
+            heapArray.set(parentLocation, swapChild);
+
+            numLocation = parentLocation;
+        }
+    }
+
 }
