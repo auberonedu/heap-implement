@@ -22,17 +22,25 @@
  *  - hold private instance variables
  */
 public class Heap {
-    public static int[] array;
+    public int[] array;
 
     public void addValue(){
         
     }
 
-    public void pop(){
+    public void pop() {
 
     }
 
     public void peek() {
 
+    }
+
+    public int getSize() {
+        return this.array.length;
+    }
+
+    public boolean isEmpty() {
+        return this.array.length == 0;
     }
 }
