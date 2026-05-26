@@ -31,8 +31,8 @@ public class Heap {
         this.list = new ArrayList<>();
     }
 
-    public void addValue(){
-        
+    public void addValue(int value){
+        list.add(value);
     }
 
     public void pop() {
