@@ -124,6 +124,10 @@ public class Heap {
         numList.set(j, temp);
     }
 
+    public boolean isEmpty(){
+        return numList.isEmpty();
+    }
+
     public String toString(){
         return numList.toString();
     }
