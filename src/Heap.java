@@ -25,32 +25,38 @@ import java.util.List;
  *  - hold private instance variables
  */
 public class Heap {
-    private static List<Integer> numList;
+    private final List<Integer> numList;
 
     public Heap(){
         numList = new ArrayList<>();
     }
 
     public void add(int num){
-        //sift up
         numList.add(num);
-        siftUp(num, numList.size() - 1);
+        siftUp(numList.size() - 1);
     }
 
     public int pop(){
-        int popped = numList.get(0);
-        int last = numList.get(numList.size() - 1);
+        if (numList.isEmpty()) {
+            throw new IllegalStateException("The heap is empty.");
+        }
 
-        numList.remove(0);
-        numList.add(0, last);
-        
-        //sift down
-        siftDown(last, 0);
+        int popped = numList.get(0);
+        int lastIndex = numList.size() - 1;
+
+        if (lastIndex == 0) {
+            numList.remove(lastIndex);
+            return popped;
+        }
+
+        int last = numList.remove(lastIndex);
+        numList.set(0, last);
+        siftDown(0);
         return popped;
     }
 
     public int peek(){
-        if (numList.size() == 0) throw new IllegalStateException("The heap is empty.");
+        if (numList.isEmpty()) throw new IllegalStateException("The heap is empty.");
         return numList.get(0);
     }
 
@@ -58,48 +64,64 @@ public class Heap {
         return numList.size();
     }
 
-    private static void siftUp(int num, int index){
-        int parentIndex = findParentIndex(index) > 0 ? findParentIndex(index) : 0;
-        int currentIndex = index;
-        while (numList.get(parentIndex) > num){
-            //switch?
-            int original = numList.get(parentIndex); //[0, 2, 3, 2]
-            numList.set(parentIndex, num);
-            numList.set(currentIndex, original);
-            currentIndex = findParentIndex(currentIndex);
-        }
+    public boolean isEmpty() {
+        return numList.isEmpty();
     }
 
-    private static void siftDown(int num, int index){
+    private void siftUp(int index){
         int currentIndex = index;
-        int currentLeft = findChildIndex(index)[0];
-        int currentRight = findChildIndex(index)[1];
-        while (numList.get(currentLeft) < num || numList.get(currentRight) < num){
-            if (numList.get(currentLeft) < num && numList.get(currentLeft) < numList.get(currentRight)){
-                int original = numList.get(currentLeft);
-                numList.set(currentLeft, num);
-                numList.set(currentIndex, original);
-                currentIndex = currentLeft;
-                if (findChildIndex(currentIndex)[0] >= numList.size() - 1) return;
-            } else if (numList.get(currentRight) < num && numList.get(currentRight) < numList.get(currentLeft)){
-                int original = numList.get(currentRight);
-                numList.set(currentRight, num);
-                numList.set(currentIndex, original);
-                currentIndex = currentRight;
-                if (findChildIndex(currentIndex)[1] >= numList.size() - 1) return;
+
+        while (currentIndex > 0) {
+            int parentIndex = findParentIndex(currentIndex);
+            if (numList.get(parentIndex) <= numList.get(currentIndex)) {
+                break;
             }
+            swap(parentIndex, currentIndex);
+            currentIndex = parentIndex;
         }
     }
 
-    private static int findParentIndex(int index){
-        double var1 = Math.floor(index / 2);
-        double var2 = index / 2;
-        int parentIndex = var1 < var2 ?  (int) var1 : (int) var1 - 1;
-        return parentIndex;
+    private void siftDown(int index){
+        int currentIndex = index;
+
+        while (true) {
+            int left = findLeftChildIndex(currentIndex);
+            int right = findRightChildIndex(currentIndex);
+            int smallest = currentIndex;
+
+            if (left < numList.size() && numList.get(left) < numList.get(smallest)) {
+                smallest = left;
+            }
+
+            if (right < numList.size() && numList.get(right) < numList.get(smallest)) {
+                smallest = right;
+            }
+
+            if (smallest == currentIndex) {
+                break;
+            }
+
+            swap(currentIndex, smallest);
+            currentIndex = smallest;
+        }
     }
 
-    private static int[] findChildIndex(int index){
-        return new int[]{(2 * index + 1), (2 * index + 2)};
+    private int findParentIndex(int index){
+        return (index - 1) / 2;
+    }
+
+    private int findLeftChildIndex(int index){
+        return 2 * index + 1;
+    }
+
+    private int findRightChildIndex(int index){
+        return 2 * index + 2;
+    }
+
+    private void swap(int i, int j) {
+        int temp = numList.get(i);
+        numList.set(i, numList.get(j));
+        numList.set(j, temp);
     }
 
     public String toString(){
