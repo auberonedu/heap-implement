@@ -4,12 +4,12 @@ import java.util.Scanner;
  * Interactive runner program for testing your Heap implementation.
  * 
  * Commands:
- *   - Add a value
- *   - Pop the front value
- *   - Peek at the front value
- *   - Check the size
- *   - Check whether the heap is empty
- *   - Quit
+ * - Add a value
+ * - Pop the front value
+ * - Peek at the front value
+ * - Check the size
+ * - Check whether the heap is empty
+ * - Quit
  * 
  * Wherever you see TODO comments, you will need to fill in the appropriate
  * code to construct your Heap or call one of its methods. The method names
@@ -20,7 +20,7 @@ public class HeapRunner {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // TODO: Construct your Heap here.
+        Heap heap = new Heap();
 
         System.out.println("=== Heap Tester ===");
 
@@ -38,23 +38,33 @@ public class HeapRunner {
                     System.out.println("That wasn't a valid integer. Try again.");
                     continue;
                 }
- 
-                // TODO: Call your "add" method on the heap, passing in 'value'.
-                // TODO: Print message letting user know value was added
- 
+
+                heap.add(value);
+                System.out.println("Value was added");
+
             } else if (choice.equals("p") || choice.equals("pop")) {
-                // TODO: Call your "pop" method and print the result.
-                // Properly handle the case of an empty heap!
+
+                try {
+                    System.out.println("Pop value: " + heap.pop());
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Can't pop from empty heap.");
+                }
 
             } else if (choice.equals("k") || choice.equals("peek")) {
-                // TODO: Call your "peek" method and print the result
-                // Properly handle the case of an empty heap!
+
+                try {
+                    System.out.println("Front value: " + heap.peek());
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Heap is empty");
+                }
 
             } else if (choice.equals("s") || choice.equals("size")) {
-                // TODO: Call your "size" method and print the result
+
+                System.out.println("Number of values: " + heap.size());
 
             } else if (choice.equals("e") || choice.equals("empty")) {
-                // TODO: Call your "isEmpty" method and print the result
+
+                System.out.println("Is the heap empty? " + heap.isEmpty());
 
             } else if (choice.equals("q") || choice.equals("quit")) {
                 break;
