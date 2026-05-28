@@ -26,6 +26,17 @@ public class HeapTest {
     }
 
     @Test
+    public void testSizeMultipleElementHeap() {
+        Heap myHeap = new Heap();
+        myHeap.addValue(4);
+        myHeap.addValue(2);
+        myHeap.addValue(1);
+        myHeap.addValue(5);
+        assertEquals(4, myHeap.getSize());
+    }
+
+
+    @Test
     public void testHeapOrder() {
         /*
               1
