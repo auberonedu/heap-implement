@@ -58,22 +58,54 @@ public class Heap {
     public void add(int num) {
         heapArray.add(num);
         int numLocation = heapArray.size() - 1;
+        int parentLocation = parent(numLocation);
         
         while(num > parent(numLocation)) {
-            int parentLocation = parent(numLocation);
-            int swapParent = heapArray.get(parentLocation);
-            int swapChild = heapArray.get(numLocation);
-            
-            heapArray.set(numLocation, swapParent);
-            heapArray.set(parentLocation, swapChild);
-
+            swap(numLocation, parentLocation);
             numLocation = parentLocation;
+            parentLocation = parent(numLocation);
         }
     }
 
-    public void pop() {
-        if(heapArray.size() == 0) return;
-        
+    private void swap(int a, int b) {
+        int holder = heapArray.get(b);
+        heapArray.set(b, heapArray.get(a));
+        heapArray.set(a, holder);
+    }
+
+    public int pop() {
+        if(heapArray.size() == 0) {
+            throw new IllegalArgumentException();
+        }
+        int popped = heapArray.get(0);
+
+        int last = heapArray.remove(heapArray.size()-1);
+
+        if(heapArray.isEmpty()) return popped;
+
+        heapArray.set(0, last);
+        int current = 0;
+
+        while(true) {
+            int left = left(current);
+            int right = right(current);
+
+            int smallest = current;
+
+            if(left != -1 && heapArray.get(left) < heapArray.get(smallest)) {
+                smallest = left;
+            }
+            if(right != -1 && heapArray.get(right) < heapArray.get(smallest)) {
+                smallest = right;
+            }
+
+            if(smallest == current) break;
+
+            swap(current, smallest);
+            current = smallest;
+        }
+
+        return popped;
     }
 
     public int peek() {
