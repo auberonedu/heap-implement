@@ -32,4 +32,30 @@ public class HeapTest {
 
         assertEquals(2, heap.peek());
     }
+
+    @Test
+    public void testPopSingleValue() {
+        Heap heap = new Heap();
+
+        heap.add(7);
+
+        assertEquals(7, heap.pop());
+        assertEquals(true, heap.isEmpty());
+        assertEquals(0, heap.size());
+    }
+
+    @Test
+    public void testDuplicateValues() {
+        Heap heap = new Heap();
+
+        heap.add(7);
+        heap.add(7);
+        heap.add(5);
+        heap.add(5);
+
+        assertEquals(5, heap.pop());
+        assertEquals(5, heap.pop());
+        assertEquals(7, heap.pop());
+        assertEquals(7, heap.pop());
+    }
 }
