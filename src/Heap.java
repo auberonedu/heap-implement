@@ -33,6 +33,7 @@ public class Heap {
 
     public void addValue(int value){
         list.add(value);
+        if(list.size() == 1) return;
         int lastInd = list.size() - 1;
         while(list.get(lastInd) < list.get((lastInd - 1) / 2)) {
             int parentVal = list.get((lastInd - 1) / 2);
