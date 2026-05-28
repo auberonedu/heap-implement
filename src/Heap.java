@@ -30,7 +30,7 @@ public class Heap {
     //otherwise returns -1
     private int left(int index) {
         int leftChild = index*2+1;
-        if(leftChild >= heapArray.size()) {
+        if(leftChild < heapArray.size()) {
             return leftChild;
         }
         return -1;
@@ -40,7 +40,7 @@ public class Heap {
     //otherwise returns -1
     private int right(int index) {
         int rightChild = index*2+2;
-        if(rightChild >= heapArray.size()) {
+        if(rightChild < heapArray.size()) {
             return rightChild;
         }
         return -1;
@@ -73,7 +73,7 @@ public class Heap {
 
     public void pop() {
         if(heapArray.size() == 0) return;
-
+        
         
     }
 
