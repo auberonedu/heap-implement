@@ -47,7 +47,7 @@ public class Heap {
         return -1;
     }
 
-    // if parent is greater than 0, then return the parent of the given index.
+    // returns the parent index or -1 if this is the root 
     private int parent(int index) {
         int parent = (index - 1) / 2;
         if (index > 0) {
@@ -76,7 +76,7 @@ public class Heap {
 
     public int pop() {
         if(heapArray.isEmpty()) {
-            throw new IllegalArgumentException("Heap is empty");
+            throw new IllegalStateException("Heap is empty");
         }
         int popped = heapArray.get(0);
 
@@ -111,7 +111,7 @@ public class Heap {
 
     public int peek() {
         if(heapArray.size() == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalStateException("Heap is empty");
         }
 
         return heapArray.get(0);
