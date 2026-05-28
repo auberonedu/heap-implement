@@ -74,7 +74,14 @@ public class Heap {
     public void pop() {
         if(heapArray.size() == 0) return;
         
-        
+    }
+
+    public int peek() {
+        if(heapArray.size() == 0) {
+            throw new IllegalArgumentException();
+        }
+
+        return heapArray.get(0);
     }
 
 }
