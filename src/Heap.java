@@ -60,7 +60,7 @@ public class Heap {
         int numLocation = heapArray.size() - 1;
         int parentLocation = parent(numLocation);
         
-        while(num > parent(numLocation)) {
+        while(parentLocation != -1 && heapArray.get(numLocation) < heapArray.get(parentLocation)) {
             swap(numLocation, parentLocation);
             numLocation = parentLocation;
             parentLocation = parent(numLocation);
