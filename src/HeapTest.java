@@ -6,7 +6,25 @@ public class HeapTest {
     public void testIsEmpty() {
         Heap myHeap = new Heap();
         assertEquals(true, myHeap.isEmpty());
-    
+    }
+
+    @Test
+    public void testPeakSingleElementHeap() {
+        Heap myHeap = new Heap();
+        myHeap.addValue(1);
+        assertEquals(1, myHeap.peek());
+    }
+
+    @Test
+    public void testPeakMultipleElementHeap() {
+        Heap myHeap = new Heap();
+        myHeap.addValue(4);
+        myHeap.addValue(2);
+        myHeap.addValue(1);
+        myHeap.addValue(5);
+        assertEquals(1, myHeap.peek());
+    }
+
     @Test
     public void testHeapOrder() {
         /*
