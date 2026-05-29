@@ -1,35 +1,27 @@
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * A min-heap.
- * 
- * Must contain functionality for the following: (n = # of elements in heap)
- * 
- * Adding a new value to the heap O(log(n))
- * Popping the front of the heap O(log(n))
- * Peeking at the front of the heap without removing the element O(1)
- * Getting the size of the heap O(1)
- * Checking whether the heap is empty O(1)
- * 
- * 
- * The Heap must hold ints
- * 
- * Use List/ArrayList as a backing array, but DO NOT use the
- * PriorityQueue class. Do not make Node objects, use array
- * indexing instead.
- * 
- * It is up to you to make design decisions about how to:
- * - name methods
- * - determine return value and argument types
- * - hold private instance variables
+ * A min-heap implementation using an ArrayList.
  */
 public class Heap {
     private final List<Integer> list;
 
+    public Heap() {
+        this.list = new ArrayList<>();
+    }
+
     private int leftChildIndex(int index) {
         return (2 * index) + 1;
-    };
+    }
+
+    private int rightChildIndex(int index) {
+        return (2 * index) + 2;
+    }
+
+    private int getParentIndex(int index) {
+        return (index - 1) / 2;
+    }
 
     private boolean leftChildExists(int index) {
         return leftChildIndex(index) < list.size();
@@ -39,60 +31,59 @@ public class Heap {
         return rightChildIndex(index) < list.size();
     }
 
-    private int rightChildIndex(int index) {
-        return (2 * index) + 2;
-    };
-
-    private int getParentIndex(int index) {
-        return (index - 1) / 2;
-    };
-
     private void swap(int a, int b) {
         int temp = list.get(a);
         list.set(a, list.get(b));
         list.set(b, temp);
     }
 
-    public Heap() {
-        this.list = new ArrayList<>();
-    }
-
+    /**
+     * Inserts a value into the heap.
+     * Time Complexity: O(log n)
+     */
     public void addValue(int value) {
         list.add(value);
-        if (list.size() == 1)
-            return;
+
         int currentIndex = list.size() - 1;
 
-        while (currentIndex > 0 &&
-                list.get(currentIndex) < list.get(getParentIndex(currentIndex))) {
+        while (currentIndex > 0
+                && list.get(currentIndex) < list.get(getParentIndex(currentIndex))) {
 
             swap(currentIndex, getParentIndex(currentIndex));
-
             currentIndex = getParentIndex(currentIndex);
         }
     }
 
+    /**
+     * Removes the minimum value (root) from the heap.
+     * Time Complexity: O(log n)
+     */
     public void pop() {
-        if (isEmpty())
+        if (isEmpty()) {
             return;
+        }
 
-        int end = list.get(list.size() - 1);
+        int lastValue = list.get(list.size() - 1);
 
-        list.set(0, end);
+        list.set(0, lastValue);
         list.remove(list.size() - 1);
 
         if (!isEmpty()) {
-            popHelperMethod(0);
+            heapifyDown(0);
         }
     }
 
-    private void popHelperMethod(int index) {
+    /**
+     * Restores the heap property after removing the root.
+     */
+    private void heapifyDown(int index) {
         while (leftChildExists(index)) {
 
             int smallerChildIndex = leftChildIndex(index);
 
             if (rightChildExists(index)
-                    && list.get(rightChildIndex(index)) < list.get(leftChildIndex(index))) {
+                    && list.get(rightChildIndex(index))
+                            < list.get(leftChildIndex(index))) {
 
                 smallerChildIndex = rightChildIndex(index);
             }
@@ -106,82 +97,55 @@ public class Heap {
         }
     }
 
+    /**
+     * Returns the minimum value without removing it.
+     * Time Complexity: O(1)
+     */
     public int peek() {
-        return this.list.get(0);
+        if (isEmpty()) {
+            throw new IllegalStateException("Heap is empty.");
+        }
+
+        return list.get(0);
     }
 
+    /**
+     * Returns the number of elements in the heap.
+     * Time Complexity: O(1)
+     */
     public int getSize() {
-        return this.list.size();
+        return list.size();
     }
 
+    /**
+     * Returns true if the heap contains no elements.
+     * Time Complexity: O(1)
+     */
     public boolean isEmpty() {
-        return this.list.isEmpty();
+        return list.isEmpty();
     }
 
     public void printHeap() {
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+        for (int value : list) {
+            System.out.println(value);
         }
     }
 
     public static void main(String[] args) {
-        /*
-         * 2
-         * 1 1
-         * 2 2 2
-         */
-        // Heap heap = new Heap();
-        // heap.addValue(0);
-        // heap.addValue(1);
-        // heap.addValue(1);
-        // heap.addValue(2);
-        // heap.addValue(2);
-        // heap.addValue(2);
-        // heap.addValue(2);
+        Heap heap = new Heap();
 
-        // /*
-        // 2
-        // 1 1
-        // 2 2 2
-        // */
-        // //2
-        // //1
-        // //1
-        // //2
-        // //2
-        // //2
+        heap.addValue(1);
+        heap.addValue(2);
+        heap.addValue(2);
+        heap.addValue(3);
+        heap.addValue(4);
 
-        // heap.pop();
-        // System.out.println();
-        // heap.printHeap();
+        System.out.println("Before pop:");
+        heap.printHeap();
 
-        // 1
-        // 2 1
-        // 2 2 2
+        heap.pop();
 
-        Heap heap2 = new Heap();
-        heap2.addValue(1);
-        heap2.addValue(2);
-        heap2.addValue(2);
-        heap2.addValue(3);
-        heap2.addValue(4);
-
-        /*
-         * 4
-         * 2
-         * 2
-         * 3
-         * 
-         * 
-         * 2
-         * 3 2
-         * 4
-         * 
-         * 2 3 2 4
-         */
-
-        System.out.println();
-        heap2.pop();
-        heap2.printHeap();
+        System.out.println("\nAfter pop:");
+        heap.printHeap();
     }
 }
