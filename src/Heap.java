@@ -73,54 +73,36 @@ public class Heap {
     }
 
     public void pop() {
-        /*
-         * 2 1
-         * 1 -1 -> 2 1
-         * 2 2 2 2 2 2
-         */
-
-        // 1 2 2 3 4
-        /*
-         * 2
-         * 3 2
-         * 4
-         * 
-         * 2 3 2 4
-         */
-        // Left child: 2i + 1
-
-        if (list.size() == 0)
+        if (isEmpty())
             return;
+
         int end = list.get(list.size() - 1);
-        int index = 0;
-        // swap the last value in and remove it
+
         list.set(0, end);
         list.remove(list.size() - 1);
 
-        popHelperMethod(index);
-
+        if (!isEmpty()) {
+            popHelperMethod(0);
+        }
     }
 
     private void popHelperMethod(int index) {
-        // while the leftChildExists keep going
         while (leftChildExists(index)) {
-            int nextLeftChild = list.get(leftChildIndex(index));
 
-            // if the right child doesnt exist place max value so it so the if statment will
-            // default to false
-            int nextRightChild = rightChildExists(index) ? list.get(rightChildIndex(index)) : Integer.MAX_VALUE;
+            int smallerChildIndex = leftChildIndex(index);
 
-            // swap and move elements/index based <=
-            if (nextRightChild < nextLeftChild) {
-                list.set(rightChildIndex(index), list.get(index));
-                list.set(index, nextRightChild);
-                index = rightChildIndex(index);
-            } else {
-                list.set(leftChildIndex(index), list.get(index));
-                list.set(index, nextLeftChild);
-                index = leftChildIndex(index);
+            if (rightChildExists(index)
+                    && list.get(rightChildIndex(index)) < list.get(leftChildIndex(index))) {
+
+                smallerChildIndex = rightChildIndex(index);
             }
 
+            if (list.get(index) <= list.get(smallerChildIndex)) {
+                break;
+            }
+
+            swap(index, smallerChildIndex);
+            index = smallerChildIndex;
         }
     }
 
