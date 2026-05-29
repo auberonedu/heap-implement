@@ -47,6 +47,12 @@ public class Heap {
         return (index - 1) / 2;
     };
 
+    private void swap(int a, int b) {
+        int temp = list.get(a);
+        list.set(a, list.get(b));
+        list.set(b, temp);
+    }
+
     public Heap() {
         this.list = new ArrayList<>();
     }
