@@ -51,15 +51,23 @@ public class Heap {
 
     
     public void pop() {
+        /* 
+                2           1
+              1   1    -> 2   1
+            2  2  2     2  2  2
+        */
         //Left child: 2i + 1
         if(list.size() == 0) return;
         int end = list.get(list.size() - 1);
         list.set(0, end);
-
+        list.remove(list.size() - 1);
         int index = 0;
-
+        
         while (leftChildExists(index)) {
-           
+           int nextLeftChild = list.get(leftChildIndex(index));
+           list.set(leftChildIndex(index), list.get(index));
+           list.set(index, nextLeftChild);
+
            index = leftChildIndex(index);
            System.out.println(list.get(index));
           
@@ -79,6 +87,13 @@ public class Heap {
     public boolean isEmpty() {
         return this.list.isEmpty();
     }
+
+    public void printHeap(){
+        for(int i = 0; i < list.size(); i++){
+            System.out.println(list.get(i));
+        }
+    }
+    
     public static void main(String[] args) {
         /*
                 2       
@@ -94,6 +109,7 @@ public class Heap {
         heap.addValue(2);
         heap.addValue(2);
 
+       
 
         /*
               2
@@ -109,6 +125,11 @@ public class Heap {
 
 
         heap.pop();
-   
+        System.out.println();
+        heap.printHeap();
+
+        //     1
+        //  2     1
+        // 2 2   2 
     }
 }
