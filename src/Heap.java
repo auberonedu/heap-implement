@@ -1,4 +1,3 @@
-
 import java.util.Arrays;
 
 /**
@@ -28,7 +27,7 @@ public class Heap {
     private int capacity = 10;
     private int size = 0;
 
-    int[] items = new int[capacity];
+    private int[] items = new int[capacity];
 
     private int getLeftChildIndex(int parentIndex) { return 2 * parentIndex + 1; }
     private int getRightChildIndex(int parentIndex) { return 2 * parentIndex + 2; }
@@ -36,7 +35,7 @@ public class Heap {
 
     private boolean hasLeftChild(int index) { return getLeftChildIndex(index) < size; }
     private boolean hasRightChild(int index) { return getRightChildIndex(index) < size; }
-    private boolean hasParent(int index) { return getParentIndex(index) >= 0; }
+    private boolean hasParent(int index) { return index > 0; }
 
     private int leftChild(int index) { return items[getLeftChildIndex(index)]; }
     private int rightChild(int index) { return items[getRightChildIndex(index)]; }
@@ -84,7 +83,7 @@ public class Heap {
         return size == 0;
     }
 
-    public void heapifyDown() {
+    private void heapifyDown() {
         int index = 0;
         while (hasLeftChild(index)) {
             int smallerChildIndex = getLeftChildIndex(index);
@@ -101,7 +100,7 @@ public class Heap {
         }
     }
 
-    public void heapifyUp() {
+    private void heapifyUp() {
         int index = size - 1;
         while (hasParent(index) && parent(index) > items[index]) {
             swap(getParentIndex(index), index);
