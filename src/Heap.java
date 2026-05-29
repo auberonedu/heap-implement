@@ -25,7 +25,7 @@ import java.util.ArrayList;
  *  - hold private instance variables
  */
 public class Heap {
-    public List<Integer> list;
+    private final List<Integer> list;
     private int leftChildIndex(int index) { return (2 * index) + 1;};
     private boolean leftChildExists(int index) { boolean bool = leftChildIndex(index) < list.size() ? true : false; return bool;}
     private boolean rightChildExists(int index) { boolean bool = rightChildIndex(index) < list.size() ? true : false; return bool;}
