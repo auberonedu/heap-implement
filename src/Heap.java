@@ -28,6 +28,7 @@ public class Heap {
     public List<Integer> list;
     private int leftChildIndex(int index) { return (2 * index) + 1;};
     private boolean leftChildExists(int index) { boolean bool = leftChildIndex(index) < list.size() ? true : false; return bool;}
+    private boolean rightChildExists(int index) { boolean bool = rightChildIndex(index) < list.size() ? true : false; return bool;}
     private int rightChildIndex(int index) { return (2 * index) + 2;};
     private int getParentIndex(int index) { return (index - 1) / 2;};
 
@@ -53,8 +54,17 @@ public class Heap {
     public void pop() {
         /* 
                 2           1
-              1   1    -> 2   1
+              1   -1    -> 2   1
             2  2  2     2  2  2
+        */
+
+        // 1 2 2 3 4
+        /*
+              2
+            3   2 
+           4 
+           
+           2 3 2 4
         */
         //Left child: 2i + 1
         if(list.size() == 0) return;
@@ -63,17 +73,28 @@ public class Heap {
         list.remove(list.size() - 1);
         int index = 0;
         
+        popHelperMethod(index);
+        
+        
+    }
+
+    private void popHelperMethod(int index){
         while (leftChildExists(index)) {
            int nextLeftChild = list.get(leftChildIndex(index));
-           list.set(leftChildIndex(index), list.get(index));
-           list.set(index, nextLeftChild);
+           int nextRightChild = rightChildExists(index) ? list.get(rightChildIndex(index)) : Integer.MAX_VALUE;
+           
 
-           index = leftChildIndex(index);
-           System.out.println(list.get(index));
+           if(nextRightChild < nextLeftChild) {
+            list.set(rightChildIndex(index), list.get(index));
+            list.set(index, nextRightChild);
+            index = rightChildIndex(index);
+           } else {
+            list.set(leftChildIndex(index), list.get(index));
+            list.set(index, nextLeftChild);
+            index = leftChildIndex(index);
+           }
           
         }
-        
-        
     }
 
     public int peek() {
@@ -93,43 +114,68 @@ public class Heap {
             System.out.println(list.get(i));
         }
     }
-    
+
     public static void main(String[] args) {
         /*
                 2       
               1   1
             2  2  2     
         */
-        Heap heap = new Heap();
-        heap.addValue(0);
-        heap.addValue(1);
-        heap.addValue(1);
-        heap.addValue(2);
-        heap.addValue(2);
-        heap.addValue(2);
-        heap.addValue(2);
+        // Heap heap = new Heap();
+        // heap.addValue(0);
+        // heap.addValue(1);
+        // heap.addValue(1);
+        // heap.addValue(2);
+        // heap.addValue(2);
+        // heap.addValue(2);
+        // heap.addValue(2);
 
        
 
-        /*
-              2
-            1   1
-           2 2 2
-        */
-        //2
-        //1
-        //1
-        //2
-        //2
-        //2
+        // /*
+        //       2
+        //     1   1
+        //    2 2 2
+        // */
+        // //2
+        // //1
+        // //1
+        // //2
+        // //2
+        // //2
 
 
-        heap.pop();
-        System.out.println();
-        heap.printHeap();
+        // heap.pop();
+        // System.out.println();
+        // heap.printHeap();
 
         //     1
         //  2     1
         // 2 2   2 
+
+        Heap heap2 = new Heap();
+        heap2.addValue(1);
+        heap2.addValue(2);
+        heap2.addValue(2);
+        heap2.addValue(3);
+        heap2.addValue(4);
+
+        /*
+        4
+        2
+        2
+        3
+        
+
+         2
+        3 2
+       4
+
+        2 3 2 4
+        */
+
+        System.out.println();
+        heap2.pop();
+        heap2.printHeap();
     }
 }
