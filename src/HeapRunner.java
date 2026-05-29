@@ -20,7 +20,7 @@ public class HeapRunner {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // TODO: Construct your Heap here.
+        Heap test = new Heap();
 
         System.out.println("=== Heap Tester ===");
 
@@ -39,23 +39,17 @@ public class HeapRunner {
                     continue;
                 }
  
-                // TODO: Call your "add" method on the heap, passing in 'value'.
-                // TODO: Print message letting user know value was added
- 
+                test.add(value);
+                System.out.println("Value added");
             } else if (choice.equals("p") || choice.equals("pop")) {
-                // TODO: Call your "pop" method and print the result.
-                // Properly handle the case of an empty heap!
+                System.out.println(test.pop());
 
             } else if (choice.equals("k") || choice.equals("peek")) {
-                // TODO: Call your "peek" method and print the result
-                // Properly handle the case of an empty heap!
-
+                System.out.println(test.peek());
             } else if (choice.equals("s") || choice.equals("size")) {
-                // TODO: Call your "size" method and print the result
-
+                System.out.println(test.size());
             } else if (choice.equals("e") || choice.equals("empty")) {
-                // TODO: Call your "isEmpty" method and print the result
-
+                System.out.println(test.isEmpty());
             } else if (choice.equals("q") || choice.equals("quit")) {
                 break;
 
