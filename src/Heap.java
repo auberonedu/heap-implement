@@ -26,6 +26,12 @@ import java.util.ArrayList;
  */
 public class Heap {
     public List<Integer> list;
+    private int leftChildIndex(int index) { return (2 * index) + 1;};
+    private boolean leftChildExists(int index) { boolean bool = leftChildIndex(index) < list.size() ? true : false; return bool;}
+    private int rightChildIndex(int index) { return (2 * index) + 2;};
+    private int getParentIndex(int index) { return (index - 1) / 2;};
+
+    
 
     public Heap() {
         this.list = new ArrayList<>();
@@ -43,8 +49,23 @@ public class Heap {
         }
     }
 
+    
     public void pop() {
+        //Left child: 2i + 1
+        if(list.size() == 0) return;
+        int end = list.get(list.size() - 1);
+        list.set(0, end);
 
+        int index = 0;
+
+        while (leftChildExists(index)) {
+           
+           index = leftChildIndex(index);
+           System.out.println(list.get(index));
+          
+        }
+        
+        
     }
 
     public int peek() {
@@ -57,5 +78,37 @@ public class Heap {
 
     public boolean isEmpty() {
         return this.list.isEmpty();
+    }
+    public static void main(String[] args) {
+        /*
+                2       
+              1   1
+            2  2  2     
+        */
+        Heap heap = new Heap();
+        heap.addValue(0);
+        heap.addValue(1);
+        heap.addValue(1);
+        heap.addValue(2);
+        heap.addValue(2);
+        heap.addValue(2);
+        heap.addValue(2);
+
+
+        /*
+              2
+            1   1
+           2 2 2
+        */
+        //2
+        //1
+        //1
+        //2
+        //2
+        //2
+
+
+        heap.pop();
+   
     }
 }
