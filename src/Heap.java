@@ -58,10 +58,12 @@ public class Heap {
      * Removes the minimum value (root) from the heap.
      * Time Complexity: O(log n)
      */
-    public void pop() {
+    public int pop() {
         if (isEmpty()) {
-            return;
+            return -1;
         }
+
+        int removedValue = list.get(0);
 
         int lastValue = list.get(list.size() - 1);
 
@@ -71,6 +73,8 @@ public class Heap {
         if (!isEmpty()) {
             heapifyDown(0);
         }
+
+        return removedValue;
     }
 
     /**
