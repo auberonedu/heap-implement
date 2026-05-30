@@ -57,7 +57,7 @@ public class Heap {
  }
 
  private boolean hasParent(int index) {
-  return getParentIndex(index) >= 0;
+  return index > 0;
  }
 
  private int leftChild(int index) {
@@ -119,19 +119,22 @@ public class Heap {
   }
  }
 
- public void heapifyDown() {
+ private void heapifyDown() {
   int index = 0;
-  while (hasParent(index)) {
+
+  while (hasLeftChild(index)) {
    int smallerChildIndex = getLeftChildIndex(index);
+
    if (hasRightChild(index) && rightChild(index) < leftChild(index)) {
     smallerChildIndex = getRightChildIndex(index);
    }
-   if (items.get(index) < items.get(smallerChildIndex)) {
+
+   if (items.get(index) <= items.get(smallerChildIndex)) {
     break;
-   } else {
-    swap(index, smallerChildIndex);
-    index = smallerChildIndex;
    }
+
+   swap(index, smallerChildIndex);
+   index = smallerChildIndex;
   }
  }
 

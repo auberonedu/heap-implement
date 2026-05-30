@@ -43,14 +43,14 @@ public class HeapRunner {
                 // TODO: Call your "add" method on the heap, passing in 'value'.
                 heap.add(value);
                 // TODO: Print message letting user know value was added
-                System.out.println(value + "We add to the heap.");
+                System.out.println(value + " We add to the heap.");
 
             } else if (choice.equals("p") || choice.equals("pop")) {
                 // TODO: Call your "pop" method and print the result.
                 // Properly handle the case of an empty heap!
                 try {
                     int remove = heap.pop();
-                    System.out.println("Remove the value" + remove);
+                    System.out.println(" Remove the value" + remove);
                 } catch (IllegalStateException e) {
                     System.out.println("Heap is empty");
                 }
@@ -62,16 +62,16 @@ public class HeapRunner {
                     int front = heap.peek();
                     System.out.println("Front value: " + front);
                 } catch (IllegalStateException e) {
-                    System.out.println("Heap is empty.");
+                    System.out.println(" Heap is empty.");
                 }
 
             } else if (choice.equals("s") || choice.equals("size")) {
                 // TODO: Call your "size" method and print the result
-                System.out.println("Heap size: " + heap.size());
+                System.out.println(" Heap size: " + heap.size());
 
             } else if (choice.equals("e") || choice.equals("empty")) {
                 // TODO: Call your "isEmpty" method and print the result
-                System.out.println("Is heap empty? " + heap.isEmpty());
+                System.out.println(" Is heap empty? " + heap.isEmpty());
 
             } else if (choice.equals("q") || choice.equals("quit")) {
                 break;
