@@ -28,12 +28,20 @@ public class Heap {
  private ArrayList<Integer> items = new ArrayList<>();
  private int size;
 
+ public int size() {
+  return size;
+ }
+
+ public boolean isEmpty() {
+  return size == 0;
+ }
+
  private int getLeftChildIndex(int parentIndex) {
   return 2 * parentIndex + 1;
  }
 
  private int getRightChildIndex(int parentIndex) {
-  return 2 * parentIndex + 1;
+  return 2 * parentIndex + 2;
  }
 
  private int getParentIndex(int childIndex) {
