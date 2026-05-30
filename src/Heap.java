@@ -85,7 +85,7 @@ public class Heap {
 
  }
 
- public int poll() {
+ public int pop() {
   if (size == 0)
    throw new IllegalStateException();
 
@@ -120,8 +120,8 @@ public class Heap {
  }
 
  public void heapifyDown() {
-  int index = size - 1;
-  while (hasParent(index) && parent(index) > items.get(index)) {
+  int index = 0;
+  while (hasParent(index)) {
    int smallerChildIndex = getLeftChildIndex(index);
    if (hasRightChild(index) && rightChild(index) < leftChild(index)) {
     smallerChildIndex = getRightChildIndex(index);

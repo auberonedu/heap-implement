@@ -49,7 +49,7 @@ public class HeapRunner {
                 // TODO: Call your "pop" method and print the result.
                 // Properly handle the case of an empty heap!
                 try {
-                    int remove = heap.poll();
+                    int remove = heap.pop();
                     System.out.println("Remove the value" + remove);
                 } catch (IllegalStateException e) {
                     System.out.println("Heap is empty");
