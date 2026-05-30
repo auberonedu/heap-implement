@@ -64,4 +64,51 @@ public class Heap {
   return items.get(getParentIndex(index));
  }
 
+ private void swap(int indexOne, int indexTwo) {
+    int temp = items.get(indexOne);
+    items.set(indexOne, items.get(indexTwo));
+items.set(indexTwo, temp);
+ }
+
+ public int peek() {
+    if(size == 0)
+        throw new IllegalStateException();
+    return items.get(0);
+
+ }
+
+ public int poll() {
+    if(size == 0) {
+        throw new IllegalStateException();
+        int item = items.get(0);
+
+        items.set(0, items.get(size-1));
+        items.remove(size-1);
+        size--;
+        heapifyDown();
+        return item;
+    }
+ }
+ public void add(int item) {
+    items.add(item);
+    size++;
+    heapifyUp();
+ }
+
+ public void heapifyDown() {
+    int index = size -1;
+    while(hasParent(index) && parent(index) > items.get(index)) {
+        int smallerChildIndex = getLeftChildIndex(index);
+        if(hasRightChild(index) && rightChild(index) < leftChild(index)) {
+            smallerChildIndex = getRightChildIndex(index);
+        }
+        if(items.get(index) < items.get(smallerChildIndex)) {
+            break;
+        }else{
+            swap(index, smallerChildIndex);
+            index = smallerChildIndex;
+        }
+    }
+ }
+
 }
