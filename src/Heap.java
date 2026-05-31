@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 /**
  * A min-heap. 
  * 
@@ -23,7 +24,7 @@ import java.util.ArrayList;
  *  - hold private instance variables
  */
 public class Heap {
-      private ArrayList<Integer> heap;
+      private List<Integer> heap;
 
        public Heap() {
         heap = new ArrayList<>();
