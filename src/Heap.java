@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A min-heap.
@@ -25,10 +26,10 @@ import java.util.ArrayList;
  */
 public class Heap {
 
-    private ArrayList<Integer> values;
+    private final ArrayList<Integer> values;
 
     public Heap() {
-        values = new ArrayList<Integer>();
+        values = new ArrayList<>();
     }
 
     public void add(int value) {
@@ -38,7 +39,7 @@ public class Heap {
 
     public int pop() {
         if (isEmpty()) {
-            throw new IllegalStateException("Cannot pop from a empty heap");
+            throw new IllegalStateException("Cannot pop from an empty heap");
         }
 
         int smallest = values.get(0);
