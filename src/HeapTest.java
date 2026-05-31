@@ -1,4 +1,9 @@
 import static org.junit.Assert.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 public class HeapTest {
@@ -56,6 +61,58 @@ public class HeapTest {
     heap.addHeap(2);
 
     assertEquals("[2, 5, 3, 15, 9, 11, 10]", heap.getHeap().toString());
+  }
+
+  @Test
+  public void testPeekHeapDoesntModifyElements() {
+    Heap heap = new Heap();
+
+    heap.addHeap(10);
+    heap.addHeap(5);
+    heap.addHeap(8);
+    heap.addHeap(3);
+    heap.addHeap(9);
+    
+    heap.peekHeap();
+
+    ArrayList<Integer> expected = new ArrayList<>();
+    expected.add(3);
+    expected.add(5);
+    expected.add(8);
+    expected.add(10);
+    expected.add(9);
+
+    assertEquals(expected, heap.getHeap());
+  }
+
+  @Test
+  public void testPeekEmptyHeapPrintsNegativeOne() {
+    Heap heap = new Heap();
+
+    ByteArrayOutputStream output = new ByteArrayOutputStream();
+    System.setOut(new PrintStream(output));
+
+    heap.peekHeap();
+
+    assertEquals("-1", output.toString().trim());
+
+  }
+
+  @Test
+  public void testPeekPrintsRootValue() {
+    Heap heap = new Heap();
+
+    heap.addHeap(2);
+    heap.addHeap(4);
+    heap.addHeap(5);
+
+    ByteArrayOutputStream output = new ByteArrayOutputStream();
+    System.setOut(new PrintStream(output));
+
+    heap.peekHeap();
+
+    assertEquals("2", output.toString().trim());
+
   }
 
   @Test
@@ -156,6 +213,7 @@ public void testPopWDuplicates() {
 
     assertEquals("[5, 5, 5]", heap.getHeap().toString());
 }
+
 
 
 }

@@ -74,7 +74,11 @@ public class Heap {
 
     // look at 0 index
     public void peekHeap(){
-        System.out.println(heap.get(0));
+        if (heap.isEmpty()) {
+            System.out.println(-1);
+        } else {
+            System.out.println(heap.get(0));
+        }
     }
 
     // remove num at top of heap/at 0 index
