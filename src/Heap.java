@@ -32,11 +32,11 @@ public class Heap <T extends Comparable<T>> {
     }
 
     private int childIndexLeft(int currentIndex) {
-        return ();
+        return (currentIndex + 1) * 2;
     }
 
     private int childIndexRight(int currentIndex) {
-        return ();
+        return (currentIndex + 2) * 2;
     }
 
     public void add(T data) {
@@ -60,29 +60,38 @@ public class Heap <T extends Comparable<T>> {
         }
     }
 
-    public void Pop(T data) {
+    public void Pop() {
         newHeap.set(0, newHeap.getLast());
         newHeap.removeLast();
 
         int currentIndex = 0;
 
-        while(currentIndex < newHeap.size()) {
-            int child = 0;
+        if(newHeap.isEmpty()) {
+            return;
+        }
 
-            if(childIndexLeft(currentIndex) < childIndexRight(currentIndex)){
-                child = childIndexLeft(currentIndex);
-            } else if (childIndexLeft(currentIndex) > childIndexRight(currentIndex)){
-                child = childIndexRight(currentIndex);
-            } else {
+        while(currentIndex < newHeap.size()) {
+            int left = childIndexLeft(currentIndex);
+            int right = childIndexRight(currentIndex);
+
+            if(left >= newHeap.size()) {
                 break;
             }
 
+            int child;
+
+            if(right < newHeap.size() && newHeap.get(right).compareTo(newHeap.get(left)) < 0){
+                child = right;
+            } else {
+                child = left;
+            }
+
             if(newHeap.get(currentIndex).compareTo(newHeap.get(child)) > 0){
-                T temp = newHeap.get(child);
+                T temp = newHeap.get(currentIndex);
 
-                newHeap.set(child, newHeap.get(currentIndex));
+                newHeap.set(currentIndex, newHeap.get(child));
 
-                newHeap.set(currentIndex, temp);
+                newHeap.set(child, temp);
 
                 currentIndex = child;
             } else {

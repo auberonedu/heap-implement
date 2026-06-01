@@ -31,4 +31,21 @@ public class HeapTest {
         assertEquals(3, heap.newHeap.size());
         assertEquals(Integer.valueOf(1), heap.newHeap.get(0));
     }
+
+    @Test 
+    public void testPop() {
+        Heap<Integer> heap = new Heap<>();
+
+        heap.add(1);
+        heap.add(2);
+        heap.add(3);
+
+        assertEquals(3, heap.newHeap.size());
+        
+        heap.Pop();
+
+        assertEquals(2, heap.newHeap.size());
+
+        assertFalse(heap.newHeap.contains(1));
+    }
 }
