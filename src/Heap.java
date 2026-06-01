@@ -65,7 +65,7 @@ public class Heap {
     
     /**
      * Popping the front of the heap O(log(n))
-     * @return the integer of the popped element
+     * @return the minimum element at the root of the heap
      */
     public int pop() {
         if (heap.size() <= 0) throw new NoSuchElementException("Heap is empty");
