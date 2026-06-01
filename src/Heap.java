@@ -76,6 +76,9 @@ public class Heap {
         heap.set(0, heap.getLast());
         heap.removeLast();
 
+        // Skips the bubble down if the heap is empty
+        if (heap.isEmpty()) return min;
+
         // Bubble down
         int parentIndex = 0;
 
