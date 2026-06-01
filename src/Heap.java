@@ -54,7 +54,7 @@ public class Heap {
         if (currentIndex == 0) return;
         
         // loop while parent value is greater than current value
-        while (heap.get(parentIndex) > heap.get(currentIndex)) {
+        while (currentIndex > 0 && heap.get(parentIndex) > heap.get(currentIndex)) {
             int currentVal = heap.get(currentIndex);
             // use set method to move parent value into current index
             heap.set(currentIndex, heap.get(parentIndex));
