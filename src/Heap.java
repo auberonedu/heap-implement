@@ -24,105 +24,97 @@ import java.util.NoSuchElementException;
  *  - determine return value and argument types
  *  - hold private instance variables
  */
-public class Heap <T extends Comparable<T>> {
+public class Heap<T extends Comparable<? super T>> {
 
-    ArrayList<T> newHeap = new ArrayList<>();
+    private final ArrayList<T> elements = new ArrayList<>();
 
-    private int ParentIndex(int currentIndex) {
+    private int parentIndex(int currentIndex) {
         return (currentIndex - 1) / 2;
     }
 
-    private int childIndexLeft(int currentIndex) {
+    private int leftChildIndex(int currentIndex) {
         return (currentIndex * 2) + 1;
     }
 
-    private int childIndexRight(int currentIndex) {
+    private int rightChildIndex(int currentIndex) {
         return (currentIndex * 2) + 2;
     }
 
-    public T add(T data) {
-        T value = data;
+    private void swap(int i, int j) {
+        T temp = elements.get(i);
+        elements.set(i, elements.get(j));
+        elements.set(j, temp);
+    }
 
-        newHeap.add(data);
-        int currentIndex = newHeap.size() - 1;
+    public void add(T data) {
+        if (data == null) {
+            throw new IllegalArgumentException("Heap does not support null values");
+        }
 
-        while(currentIndex > 0) {
-            int parent = ParentIndex(currentIndex);
+        elements.add(data);
+        int currentIndex = elements.size() - 1;
 
-            if(newHeap.get(currentIndex).compareTo(newHeap.get(parent)) < 0){
-                T temp = newHeap.get(parent);
-
-                newHeap.set(parent, newHeap.get(currentIndex));
-
-                newHeap.set(currentIndex, temp);
-
+        while (currentIndex > 0) {
+            int parent = parentIndex(currentIndex);
+            if (elements.get(currentIndex).compareTo(elements.get(parent)) < 0) {
+                swap(currentIndex, parent);
                 currentIndex = parent;
             } else {
                 break;
             }
         }
-        return data;
     }
 
-    public T Pop() {
-        if(newHeap.isEmpty()) {
+    public T pop() {
+        if (elements.isEmpty()) {
             throw new NoSuchElementException("Empty heap and nothing to pop");
         }
-        T removed = newHeap.get(0);
 
-        if(newHeap.isEmpty()) {
-            return null;
+        T removed = elements.get(0);
+        if (elements.size() == 1) {
+            elements.remove(0);
+            return removed;
         }
 
-        newHeap.set(0, newHeap.getLast());
-        newHeap.removeLast();
+        elements.set(0, elements.remove(elements.size() - 1));
 
         int currentIndex = 0;
+        while (true) {
+            int left = leftChildIndex(currentIndex);
+            int right = rightChildIndex(currentIndex);
 
-        while(currentIndex < newHeap.size()) {
-            int left = childIndexLeft(currentIndex);
-            int right = childIndexRight(currentIndex);
-
-            if(left >= newHeap.size()) {
+            if (left >= elements.size()) {
                 break;
             }
 
-            int child;
-
-            if(right < newHeap.size() && newHeap.get(right).compareTo(newHeap.get(left)) < 0){
-                child = right;
-            } else {
-                child = left;
+            int smallerChild = left;
+            if (right < elements.size() && elements.get(right).compareTo(elements.get(left)) < 0) {
+                smallerChild = right;
             }
 
-            if(newHeap.get(currentIndex).compareTo(newHeap.get(child)) > 0){
-                T temp = newHeap.get(currentIndex);
-
-                newHeap.set(currentIndex, newHeap.get(child));
-
-                newHeap.set(child, temp);
-
-                currentIndex = child;
-            } else {
+            if (elements.get(currentIndex).compareTo(elements.get(smallerChild)) <= 0) {
                 break;
             }
+
+            swap(currentIndex, smallerChild);
+            currentIndex = smallerChild;
         }
+
         return removed;
     }
 
-    public T Peek() throws IllegalStateException{
-        if(newHeap.isEmpty()) {
-            throw new IllegalStateException("Empty Heap");
+    public T peek() {
+        if (elements.isEmpty()) {
+            throw new NoSuchElementException("Empty heap and nothing to peek");
         }
-
-        return newHeap.get(0);
+        return elements.get(0);
     }
 
-    public int heapSize() {
-        return newHeap.size();
+    public int size() {
+        return elements.size();
     }
 
-    public boolean heapIsEmpty() {
-        return newHeap.size() == 0;
+    public boolean isEmpty() {
+        return elements.isEmpty();
     }
 }

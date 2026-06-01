@@ -45,7 +45,8 @@ public class HeapRunner <T>{
  
                 // TODO: Call your "add" method on the heap, passing in 'value'.
                 // TODO: Print message letting user know value was added
-                System.out.println("Value " + heap.add(value) + " Added");
+                heap.add(value);
+                System.out.println("Value " + value + " Added");
  
             } else if (choice.equals("p") || choice.equals("pop")){
                 // TODO: Call your "pop" method and print the result.
@@ -54,7 +55,7 @@ public class HeapRunner <T>{
                 
 
                 try {
-                    var value = heap.Pop();
+                    var value = heap.pop();
                     System.out.println("Value: " + value);
                 } catch (NoSuchElementException e){
                     System.out.println("There is nothing in the pool");
@@ -63,19 +64,19 @@ public class HeapRunner <T>{
                 // TODO: Call your "peek" method and print the result
                 // Properly handle the case of an empty heap!
                 try {
-                    System.out.println("Peeked value: " + heap.Peek());
-                } catch (IllegalStateException e){
+                    System.out.println("Peeked value: " + heap.peek());
+                } catch (NoSuchElementException e){
                     System.out.println("Heap is empty nothing to see");
                 }
                 
 
             } else if (choice.equals("s") || choice.equals("size")) {
                 // TODO: Call your "size" method and print the result
-                System.out.println("Size of Heap: " + heap.heapSize());
+                System.out.println("Size of Heap: " + heap.size());
 
             } else if (choice.equals("e") || choice.equals("empty")) {
                 // TODO: Call your "isEmpty" method and print the result
-                System.out.println("Is the heap Empty : " + heap.heapIsEmpty());
+                System.out.println("Is the heap Empty : " + heap.isEmpty());
 
             } else if (choice.equals("q") || choice.equals("quit")) {
                 break;
