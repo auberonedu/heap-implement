@@ -104,9 +104,8 @@ public class Heap {
         }
 
         // set the root value to the value of the last item in array if its not empty
-        if(heap.size() > 0){
-            heap.set(0, newRoot);
-        }
+        heap.set(0, newRoot);
+        
         
 
         // get index of left and right child
