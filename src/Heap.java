@@ -110,7 +110,7 @@ public class Heap {
      * @return found integer
      */
     public int peek() {
-        if (heap.size() <= 0) throw new NoSuchElementException("Heap is empty");
+        if (heap.isEmpty()) throw new NoSuchElementException("Heap is empty");
         return heap.getFirst();
     }
 
