@@ -1,4 +1,7 @@
 import static org.junit.Assert.*;
+
+import java.util.NoSuchElementException;
+
 import org.junit.Test;
 
 public class HeapTest {
@@ -62,5 +65,25 @@ public class HeapTest {
         heap.Pop();
 
         assertTrue(heap.newHeap.size() == 0);
+    }
+
+    @Test
+    public void testPeek() {
+        Heap<Integer> heap = new Heap<>();
+
+        heap.add(1);
+        heap.add(2);
+        heap.add(3);
+
+        assertTrue(heap.Peek() == 1);
+        assertEquals(3, heap.newHeap.size());
+    }
+
+    @Test
+    public void testPeekException() {
+        Heap<Integer> heap = new Heap<>();
+        assertThrows(IllegalStateException.class,  () -> { 
+            heap.Peek();
+        });
     }
 }

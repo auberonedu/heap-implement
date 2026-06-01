@@ -99,4 +99,12 @@ public class Heap <T extends Comparable<T>> {
             }
         }
     }
+
+    public T Peek() throws IllegalStateException{
+        if(newHeap.isEmpty()) {
+            throw new IllegalStateException("Empty Heap");
+        }
+
+        return newHeap.get(0);
+    }
 }
