@@ -49,7 +49,6 @@ public class HeapRunner <T>{
                 // TODO: Call your "pop" method and print the result.
                 
                 // Properly handle the case of an empty heap!
-                
 
                 try {
                     var value = heap.Pop();
