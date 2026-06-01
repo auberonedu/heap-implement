@@ -109,7 +109,7 @@ public class Heap {
      * Peeking at the front of the heap without removing the element O(1)
      * @return found integer
      */
-    public int peak() {
+    public int peek() {
         if (heap.size() <= 0) throw new NoSuchElementException("Heap is empty");
         return heap.getFirst();
     }

@@ -61,7 +61,7 @@ public class HeapRunner {
                 // TODO: Call your "peek" method and print the result
                 // Properly handle the case of an empty heap!
                 try {
-                    int peeked = minHeap.peak();
+                    int peeked = minHeap.peek();
                     System.out.println("Front of heap: " + peeked);
                 } catch (NoSuchElementException e) {
                     System.out.println("Cannot peek — the heap is empty!");

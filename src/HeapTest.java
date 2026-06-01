@@ -22,7 +22,7 @@ public class HeapTest {
         heap.add(10);
         heap.add(3);
         heap.add(7);
-        assertEquals(3, heap.peak());
+        assertEquals(3, heap.peek());
     }
 
     @Test
@@ -30,7 +30,7 @@ public class HeapTest {
         heap.add(1);
         heap.add(2);
         heap.add(3);
-        assertEquals(1, heap.peak());
+        assertEquals(1, heap.peek());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class HeapTest {
         heap.add(4);
         heap.add(4);
         assertEquals(3, heap.getSize());
-        assertEquals(4, heap.peak());
+        assertEquals(4, heap.peek());
     }
 
     @Test
@@ -50,57 +50,57 @@ public class HeapTest {
         assertEquals(3, heap.getSize());
     }
 
-    // peak methods
+    // peek methods
 
     @Test
-    public void testPeakReturnsMinElement() {
+    public void testpeekReturnsMinElement() {
         heap.add(10);
         heap.add(3);
         heap.add(7);
-        assertEquals(3, heap.peak());
+        assertEquals(3, heap.peek());
     }
 
     @Test
-    public void testPeakOnSingleElement() {
+    public void testpeekOnSingleElement() {
         heap.add(42);
-        assertEquals(42, heap.peak());
+        assertEquals(42, heap.peek());
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void testPeakOnEmptyHeapThrows() {
-        heap.peak();
+    public void testpeekOnEmptyHeapThrows() {
+        heap.peek();
     }
 
     @Test
-    public void testPeakDoesNotRemoveElement() {
+    public void testpeekDoesNotRemoveElement() {
         heap.add(5);
         heap.add(1);
-        heap.peak();
+        heap.peek();
         assertEquals(2, heap.getSize());
     }
 
     @Test
-    public void testPeakAfterAddingInOrder() {
+    public void testpeekAfterAddingInOrder() {
         heap.add(1);
         heap.add(2);
         heap.add(3);
-        assertEquals(1, heap.peak());
+        assertEquals(1, heap.peek());
     }
 
     @Test
-    public void testPeakAfterAddingInReverseOrder() {
+    public void testpeekAfterAddingInReverseOrder() {
         heap.add(9);
         heap.add(6);
         heap.add(3);
-        assertEquals(3, heap.peak());
+        assertEquals(3, heap.peek());
     }
 
     @Test
-    public void testPeakWithDuplicates() {
+    public void testpeekWithDuplicates() {
         heap.add(2);
         heap.add(2);
         heap.add(2);
-        assertEquals(2, heap.peak());
+        assertEquals(2, heap.peek());
     }
 
     // getSize methods
@@ -133,10 +133,10 @@ public class HeapTest {
     }
 
     @Test
-    public void testSizeIsNotAffectedByPeak() {
+    public void testSizeIsNotAffectedBypeek() {
         heap.add(10);
         heap.add(20);
-        heap.peak();
+        heap.peek();
         assertEquals(2, heap.getSize());
     }
 
@@ -175,7 +175,7 @@ public class HeapTest {
         heap.add(3);
         heap.add(7);
         heap.pop();
-        assertEquals(7, heap.peak());
+        assertEquals(7, heap.peek());
     }
 
     @Test
