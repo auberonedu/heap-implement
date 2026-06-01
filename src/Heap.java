@@ -68,16 +68,16 @@ public class Heap {
     }
 
     // used to print out heap for debug
-    public void printHeap(){
-        System.out.println(heap);
+    public ArrayList<Integer> printHeap(){
+        return heap;
     }
 
     // look at 0 index
-    public void peekHeap(){
+    public int peekHeap(){
         if (heap.isEmpty()) {
-            System.out.println(-1);
+            return -1;
         } else {
-            System.out.println(heap.get(0));
+            return heap.get(0);
         }
     }
 
@@ -154,13 +154,13 @@ public class Heap {
     
 
     // get size of heap
-    public void sizeHeap(){
-        System.out.println(heap.size());
+    public int sizeHeap(){
+        return heap.size();
     }
 
     // check if heap is empty
-    public void emptyHeap(){
-        System.out.println(heap.isEmpty());
+    public boolean emptyHeap(){
+        return heap.isEmpty();
     }
 
     

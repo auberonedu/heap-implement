@@ -92,7 +92,7 @@ public class HeapTest {
     ByteArrayOutputStream output = new ByteArrayOutputStream();
     System.setOut(new PrintStream(output));
 
-    heap.peekHeap();
+    System.out.println(heap.peekHeap());
 
     assertEquals("-1", output.toString().trim());
 
@@ -109,7 +109,7 @@ public class HeapTest {
     ByteArrayOutputStream output = new ByteArrayOutputStream();
     System.setOut(new PrintStream(output));
 
-    heap.peekHeap();
+    System.out.println(heap.peekHeap());
 
     assertEquals("2", output.toString().trim());
 
