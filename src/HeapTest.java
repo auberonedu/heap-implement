@@ -86,4 +86,22 @@ public class HeapTest {
             heap.Peek();
         });
     }
+
+    @Test
+    public void testHeapSize() {
+        Heap<Integer> heap = new Heap<>();
+
+        heap.add(1);
+        heap.add(2);
+        heap.add(3);
+
+        assertEquals(3, heap.heapSize());
+    }
+
+    @Test
+    public void testHeapSizeZero() {
+        Heap<Integer> heap = new Heap<>();
+
+        assertEquals(0, heap.heapSize());
+    }
 }
