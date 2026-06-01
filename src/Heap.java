@@ -8,8 +8,8 @@ import java.util.ArrayList;
  * Adding a new value to the heap  O(log(n)) implemented
  * Popping the front of the heap O(log(n)) implemented
  * Peeking at the front of the heap without removing the element O(1) implemented
- * Getting the size of the heap O(1) 
- * Checking whether the heap is empty O(1)
+ * Getting the size of the heap O(1) implemented
+ * Checking whether the heap is empty O(1) implemented
  * 
  * 
  * The Heap must hold ints
@@ -110,5 +110,9 @@ public class Heap <T extends Comparable<T>> {
 
     public int heapSize() {
         return newHeap.size();
+    }
+
+    public boolean heapIsEmpty() {
+        return newHeap.size() == 0;
     }
 }

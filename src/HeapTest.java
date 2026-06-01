@@ -104,4 +104,22 @@ public class HeapTest {
 
         assertEquals(0, heap.heapSize());
     }
+
+    @Test
+    public void testheapSizeIsZero() {
+        Heap<Integer> heap = new Heap<>();
+
+        assertTrue(heap.heapSize() == 0);
+    }
+
+    @Test
+    public void testheapSizeNotZero() {
+        Heap<Integer> heap = new Heap<>();
+
+        heap.add(1);
+        heap.add(2);
+        heap.add(3);
+
+        assertFalse(heap.heapSize() == 0);
+    }
 }
