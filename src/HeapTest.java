@@ -48,4 +48,19 @@ public class HeapTest {
 
         assertFalse(heap.newHeap.contains(1));
     }
+
+    @Test
+    public void testPopAll() {
+        Heap<Integer> heap = new Heap<>();
+
+        heap.add(1);
+        heap.add(2);
+        heap.add(3);
+
+        heap.Pop();
+        heap.Pop();
+        heap.Pop();
+
+        assertTrue(heap.newHeap.size() == 0);
+    }
 }
