@@ -127,7 +127,7 @@ public class Heap {
      * @return true if the heap is empty, false otherwise
      */
     public boolean isEmpty() {
-        return heap.size() == 0;
+        return heap.isEmpty();
     }
 
 }
