@@ -33,11 +33,11 @@ public class Heap <T extends Comparable<T>> {
     }
 
     private int childIndexLeft(int currentIndex) {
-        return (currentIndex + 1) * 2;
+        return (currentIndex * 2) + 1;
     }
 
     private int childIndexRight(int currentIndex) {
-        return (currentIndex + 2) * 2;
+        return (currentIndex * 2) + 2;
     }
 
     public T add(T data) {
@@ -70,14 +70,14 @@ public class Heap <T extends Comparable<T>> {
         }
         T removed = newHeap.get(0);
 
+        if(newHeap.isEmpty()) {
+            return null;
+        }
+
         newHeap.set(0, newHeap.getLast());
         newHeap.removeLast();
 
         int currentIndex = 0;
-
-        if(newHeap.isEmpty()) {
-            return null;
-        }
 
         while(currentIndex < newHeap.size()) {
             int left = childIndexLeft(currentIndex);

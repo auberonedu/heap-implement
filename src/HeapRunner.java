@@ -62,7 +62,12 @@ public class HeapRunner <T>{
             } else if (choice.equals("k") || choice.equals("peek")) {
                 // TODO: Call your "peek" method and print the result
                 // Properly handle the case of an empty heap!
-                System.out.println("Peeked value: " + heap.Peek());
+                try {
+                    System.out.println("Peeked value: " + heap.Peek());
+                } catch (IllegalStateException e){
+                    System.out.println("Heap is empty nothing to see");
+                }
+                
 
             } else if (choice.equals("s") || choice.equals("size")) {
                 // TODO: Call your "size" method and print the result
