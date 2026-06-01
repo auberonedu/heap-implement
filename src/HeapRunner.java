@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -21,6 +22,7 @@ public class HeapRunner <T>{
         Scanner scanner = new Scanner(System.in);
 
         // TODO: Construct your Heap here.
+        Heap<Integer> heap = new Heap<>();
 
         System.out.println("=== Heap Tester ===");
 
@@ -29,7 +31,7 @@ public class HeapRunner <T>{
             String choice = scanner.nextLine().trim().toLowerCase();
 
             if (choice.equals("a") || choice.equals("add")) {
-                System.out.print("Enter an integer to add: ");
+                System.out.print("Enter a value to add: ");
                 String input = scanner.nextLine().trim();
                 int value;
                 try {
@@ -41,20 +43,32 @@ public class HeapRunner <T>{
  
                 // TODO: Call your "add" method on the heap, passing in 'value'.
                 // TODO: Print message letting user know value was added
+                System.out.println("Value " + heap.add(value) + " Added");
  
-            } else if (choice.equals("p") || choice.equals("pop")) {
+            } else if (choice.equals("p") || choice.equals("pop")){
                 // TODO: Call your "pop" method and print the result.
+                
                 // Properly handle the case of an empty heap!
+                
 
+                try {
+                    var value = heap.Pop();
+                    System.out.println("Value: " + value);
+                } catch (NoSuchElementException e){
+                    System.out.println("There is nothing in the pool");
+                }
             } else if (choice.equals("k") || choice.equals("peek")) {
                 // TODO: Call your "peek" method and print the result
                 // Properly handle the case of an empty heap!
+                System.out.println("Peeked value: " + heap.Peek());
 
             } else if (choice.equals("s") || choice.equals("size")) {
                 // TODO: Call your "size" method and print the result
+                System.out.println("Size of Heap: " + heap.heapSize());
 
             } else if (choice.equals("e") || choice.equals("empty")) {
                 // TODO: Call your "isEmpty" method and print the result
+                System.out.println("Is the heap Empty : " + heap.heapIsEmpty());
 
             } else if (choice.equals("q") || choice.equals("quit")) {
                 break;

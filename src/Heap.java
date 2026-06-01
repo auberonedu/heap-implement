@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 /**
  * A min-heap. 
@@ -39,7 +40,9 @@ public class Heap <T extends Comparable<T>> {
         return (currentIndex + 2) * 2;
     }
 
-    public void add(T data) {
+    public T add(T data) {
+        T value = data;
+
         newHeap.add(data);
         int currentIndex = newHeap.size() - 1;
 
@@ -58,16 +61,22 @@ public class Heap <T extends Comparable<T>> {
                 break;
             }
         }
+        return data;
     }
 
-    public void Pop() {
+    public T Pop() {
+        if(newHeap.isEmpty()) {
+            throw new NoSuchElementException("Empty heap and nothing to pop");
+        }
+        T removed = newHeap.get(0);
+
         newHeap.set(0, newHeap.getLast());
         newHeap.removeLast();
 
         int currentIndex = 0;
 
         if(newHeap.isEmpty()) {
-            return;
+            return null;
         }
 
         while(currentIndex < newHeap.size()) {
@@ -98,6 +107,7 @@ public class Heap <T extends Comparable<T>> {
                 break;
             }
         }
+        return removed;
     }
 
     public T Peek() throws IllegalStateException{
