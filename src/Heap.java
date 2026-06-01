@@ -105,7 +105,7 @@ public class Heap {
     }
 
     /**
-     * This method will peak at the first element in the heap, returning the found value.
+     * This method will peek at the first element in the heap, returning the found value.
      * Peeking at the front of the heap without removing the element O(1)
      * @return found integer
      */
