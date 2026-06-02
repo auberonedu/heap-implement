@@ -24,17 +24,17 @@ import java.util.ArrayList;
  *  - hold private instance variables
  */
 public class Heap {
-    static ArrayList<Integer> main;
+    private ArrayList<Integer> main;
 
-    Heap(Integer first) {
+    public Heap(Integer first) {
         main = new ArrayList<>();
         main.add(first);
     }
-    Heap() {
+    public Heap() {
         main = new ArrayList<>();
     }
 
-    public static void add(Integer item) {
+    public void add(int item) {
         if (size() == 0) {main.add(item); return;}
         main.add(item);
         int position = main.size()-1;
@@ -50,29 +50,52 @@ public class Heap {
         }
     }
 
-    public static Integer pop() {
+    public Integer pop() {
         if (size()==0) return null;
+        if (size()==1) {
+            int output = main.get(0);
+            main.remove(0);
+            return output;
+        }
+
         int output = main.get(0);
         int position = 0;
-        while (position<main.size()-1) {
-            main.set(position, main.get(position+1));
-            position++;
-        }
+        main.set(0, main.get(size()-1));
         main.remove(main.size() - 1);
+        while (position < size()) {
+            int left = 0;
+            int right = 0;
+            int swap = 0;
+            if (2*position+1 < size()) {left = 2*position+1;}
+            if (2*position+2 < size()) {right = 2*position+2;}
+
+            if (left == 0 && right == 0) break;
+            else if (left == 0) swap = right;
+            else if (right == 0) swap = left;
+            else if (main.get(left) <= main.get(right)) swap = left;
+            else if (main.get(left) > main.get(right)) swap = right;
+
+            if (main.get(position) <= main.get(swap)) break;
+            else {
+                int temp = main.get(swap); 
+                main.set(swap, main.get(position)); 
+                main.set(position, temp); 
+                position = swap;
+            }
+        }
         return output;
     }
 
-    public static Integer peek() {
+    public Integer peek() {
         if (size()==0) return null;
         return main.get(0);
     }
 
-    public static Integer size() {
+    public int size() {
         return main.size();
     }
 
-    public static Boolean empty() {
-        if (main.size() == 0) return true;
-        else return false;
+    public boolean empty() {
+        return main.size() == 0;
     }
 }
