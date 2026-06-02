@@ -1,4 +1,7 @@
 import static org.junit.Assert.*;
+
+import java.util.List;
+
 import org.junit.Test;
 
 public class HeapTest {
@@ -59,9 +62,9 @@ public class HeapTest {
             minHeap.add(num);
         }
 
-        int[] expected = {2, 10, 5, 12, 15, 40, 30, 20};
+        List<Integer> expected = List.of(2, 10, 5, 12, 15, 40, 30, 20);
 
-        assertArrayEquals(minHeap.toList(), expected);
+        assertEquals(expected, minHeap.toList());
     }
 
 
