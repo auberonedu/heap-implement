@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
  * A min-heap implementation.
  */
 public class Heap {
-    private List<Integer> heap;
+    private final List<Integer> heap;
     
     public Heap() {
         this.heap = new ArrayList<>();
@@ -73,10 +73,10 @@ public class Heap {
         }
     }
 
-    private void swap(int child, int parent) {
-        int temp = heap.get(child);
-        heap.set(child, heap.get(parent));
-        heap.set(parent, temp);
+    private void swap(int i, int j) {
+        int temp = heap.get(i);
+        heap.set(i, heap.get(j));
+        heap.set(j, temp);
     }
 
     public int peek() {
