@@ -54,11 +54,11 @@ public class Heap {
         if (size()==0) return null;
         int output = main.get(0);
         int position = 0;
-        while (position != main.size() && position<main.size()) {
+        while (position<main.size()-1) {
             main.set(position, main.get(position+1));
             position++;
         }
-        main.set(position, null);
+        main.remove(main.size() - 1);
         return output;
     }
 
