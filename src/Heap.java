@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * A min-heap. 
  * 
@@ -22,5 +24,55 @@
  *  - hold private instance variables
  */
 public class Heap {
+    static ArrayList<Integer> main;
 
+    Heap(Integer first) {
+        main = new ArrayList<>();
+        main.add(first);
+    }
+    Heap() {
+        main = new ArrayList<>();
+    }
+
+    public static void add(Integer item) {
+        if (size() == 0) {main.add(item); return;}
+        main.add(item);
+        int position = main.size()-1;
+        while (position > 0) {
+            int higher = (position - 1) / 2;
+            if (main.get(position) >= main.get(higher)) break;
+
+            int temp = main.get(position);
+            main.set(position, main.get(higher));
+            main.set(higher, temp);
+
+            position = higher;
+        }
+    }
+
+    public static Integer pop() {
+        if (size()==0) return null;
+        int output = main.get(0);
+        int position = 0;
+        while (position != main.size() && position<main.size()) {
+            main.set(position, main.get(position+1));
+            position++;
+        }
+        main.set(position, null);
+        return output;
+    }
+
+    public static Integer peek() {
+        if (size()==0) return null;
+        return main.get(0);
+    }
+
+    public static Integer size() {
+        return main.size();
+    }
+
+    public static Boolean empty() {
+        if (main.size() == 0) return true;
+        else return false;
+    }
 }

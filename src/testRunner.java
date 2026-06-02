@@ -1,28 +1,28 @@
 import java.util.Scanner;
 
 /**
- * Interactive runner program for testing your Heap implementation.
+ * Interactive runner program for testing your test implementation.
  * 
  * Commands:
  *   - Add a value
  *   - Pop the front value
  *   - Peek at the front value
  *   - Check the size
- *   - Check whether the heap is empty
+ *   - Check whether the test is empty
  *   - Quit
  * 
  * Wherever you see TODO comments, you will need to fill in the appropriate
- * code to construct your Heap or call one of its methods. The method names
+ * code to construct your test or call one of its methods. The method names
  * and return types are up to you based on your design decisions.
  */
-public class HeapRunner {
+public class testRunner {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // TODO: Construct your Heap here.
+        Heap test = new Heap();
 
-        System.out.println("=== Heap Tester ===");
+        System.out.println("=== test Tester ===");
 
         while (true) {
             printMenu();
@@ -39,22 +39,22 @@ public class HeapRunner {
                     continue;
                 }
  
-                // TODO: Call your "add" method on the heap, passing in 'value'.
-                // TODO: Print message letting user know value was added
+                test.add(value);
+                System.out.println("Added sucessfully");
  
             } else if (choice.equals("p") || choice.equals("pop")) {
-                // TODO: Call your "pop" method and print the result.
-                // Properly handle the case of an empty heap!
+                if (test.size() == 0) System.out.println("Empty test");
+                else System.out.println(test.pop());
 
             } else if (choice.equals("k") || choice.equals("peek")) {
-                // TODO: Call your "peek" method and print the result
-                // Properly handle the case of an empty heap!
+                if (test.size() == 0) System.out.println("Empty test");
+                else System.out.println(test.peek());
 
             } else if (choice.equals("s") || choice.equals("size")) {
-                // TODO: Call your "size" method and print the result
+                System.out.println(test.size());
 
             } else if (choice.equals("e") || choice.equals("empty")) {
-                // TODO: Call your "isEmpty" method and print the result
+                System.out.println(test.empty());
 
             } else if (choice.equals("q") || choice.equals("quit")) {
                 break;
@@ -74,11 +74,11 @@ public class HeapRunner {
     private static void printMenu() {
         System.out.println();
         System.out.println("---- Commands ----");
-        System.out.println("  a / add   - add a value to the heap");
-        System.out.println("  p / pop   - pop the front value off the heap");
-        System.out.println("  k / peek  - peek at the front value of the heap");
-        System.out.println("  s / size  - print the size of the heap");
-        System.out.println("  e / empty - check whether the heap is empty");
+        System.out.println("  a / add   - add a value to the test");
+        System.out.println("  p / pop   - pop the front value off the test");
+        System.out.println("  k / peek  - peek at the front value of the test");
+        System.out.println("  s / size  - print the size of the test");
+        System.out.println("  e / empty - check whether the test is empty");
         System.out.println("  q / quit  - exit the program");
         System.out.print("Enter command: ");
     }
