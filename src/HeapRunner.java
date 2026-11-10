@@ -21,6 +21,8 @@ public class HeapRunner {
         Scanner scanner = new Scanner(System.in);
 
         // TODO: Construct your Heap here.
+        Heap hipper = new Heap();
+
 
         System.out.println("=== Heap Tester ===");
 
@@ -41,6 +43,9 @@ public class HeapRunner {
  
                 // TODO: Call your "add" method on the heap, passing in 'value'.
                 // TODO: Print message letting user know value was added
+
+                hipper.add(value); 
+                System.out.println("Added" + value + " to the heap");
  
             } else if (choice.equals("p") || choice.equals("pop")) {
                 // TODO: Call your "pop" method and print the result.
