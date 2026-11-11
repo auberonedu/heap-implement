@@ -32,6 +32,16 @@ public class Heap {
     //2i + 1 = left child, 2i + 2 = right child, (i-1)//2 = parent
     private int parent(int i) return (i-1)/2;
 
+    private int leftChild(int i) {
+        return (2*i + 1);
+    }
+
+    private int rightChild(int i) {
+        return (2*i + 2);
+    }
+    
+
+
     //Implement each of these methods (bubbling up or down respectively): 
     //add(), peek(), pop(), isEmpty(), size()
 
