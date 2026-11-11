@@ -38,6 +38,25 @@ public class Heap {
         siftUp(data.size() - 1);
     }
  
+    // Removes and returns the smallest valur 
+
+    // public void pop 
+    // let min = data.get[] 
+    public int pop() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Cannot pop from an empty heap");
+        }
+        int min = data.get(0);
+        int last = data.remove(data.size() - 1);
+        if (!data.isEmpty()) {
+            data.set(0, last);
+            siftDown(0);
+        }
+        return min;
+    }
+    
+ 
+   
  
     // private method up
     private void siftUp(int index) {
