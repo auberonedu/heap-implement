@@ -47,5 +47,33 @@ public class HeapTest {
         assertEquals(5, h.peek());
     }
  
-
+      @Test
+    public void popReturnsValuesInSortedOrder() {
+        Heap h = new Heap();
+        int[] input = {7, 3, 9, 1, 5, 8, 2};
+        for (int v : input) {
+            h.add(v);
+        }
+        int[] expected = {1, 2, 3, 5, 7, 8, 9};
+        for (int e : expected) {
+            assertEquals(e, h.pop());
+        }
+        assertTrue(h.isEmpty());
+    }
+ 
+    @Test
+    public void popDecrementsSize() {
+        Heap h = new Heap();
+        h.add(1);
+        h.add(2);
+        h.pop();
+        assertEquals(1, h.size());
+    }
+@Test
+    public void popOnSingleElementEmptiesHeap() {
+        Heap h = new Heap();
+        h.add(42);
+        assertEquals(42, h.pop());
+        assertTrue(h.isEmpty());
+    }
 }
