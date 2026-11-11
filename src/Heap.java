@@ -47,19 +47,46 @@ public class Heap {
         heap.add(value);
         bubbleUp(heap.size()-1);
     }
+
+    //Private method that compares an integer to it's parent and then calls the swap 
+    //method if i is less than it's parent
     private void bubbleUp(int i) {
         while (i>0 && heap.get(parent(i)) > heap.get(i)){
-            //TODO implement swap method
             swap(i, parent(i));
 
             i = parent(i);
         }
     }
-
-    private void swap(int currentIndex, int parentIndex) {
+    // Private method for swapping a current index with it's intended target
+    private void swap(int currentIndex, int targetIndex) {
         int temp = heap.get(currentIndex);
-        heap.set(currentIndex, heap.get(parentIndex));
-        heap.set(parentIndex, temp);
+        heap.set(currentIndex, heap.get(targetIndex));
+        heap.set(targetIndex, temp);
+    }
+
+    //Private method for sifting down, moving an integer down to it's smaller child
+    //and calling swap method until the children of i are not bigger than i 
+    private void siftDown(int i){
+        int size = heap.size();
+
+        while( true ) {
+            int left = leftChild(i);
+            int right = rightChild(i);
+            int smallest = i;
+
+            if(left < size && heap.get(left) < heap.get(smallest)){
+                smallest = left;
+            }
+            if(right< size && heap.get(right) < heap.get(smallest)){
+                smallest = right;
+            }
+            if(smallest == i){
+                break;
+            }
+            swap(i, smallest);
+            i = smallest;
+
+        }
     }
 
     //Throw errors for an empty Heap, so pop and peek would throw an exception 
