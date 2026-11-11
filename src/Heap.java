@@ -50,7 +50,16 @@ public class Heap {
     private void bubbleUp(int i) {
         while (i>0 && heap.get(parent(i)) > heap.get(i)){
             //TODO implement swap method
+            swap(i, parent(i));
+
+            i = parent(i);
         }
+    }
+
+    private void swap(int currentIndex, int parentIndex) {
+        int temp = heap.get(currentIndex);
+        heap.set(currentIndex, heap.get(parentIndex));
+        heap.set(parentIndex, temp);
     }
 
     //Throw errors for an empty Heap, so pop and peek would throw an exception 
