@@ -25,100 +25,96 @@ import java.util.NoSuchElementException;
  *  - determine return value and argument types
  *  - hold private instance variables
  */
+
 public class Heap {
 
-     private final List<Integer> data = new ArrayList<>();
- 
-     //public void  add 
-     // data.add val
+    private List<Integer> data = new ArrayList<>();
 
-     // data size - 1
+    // Add a value to the heap
     public void add(int value) {
         data.add(value);
         siftUp(data.size() - 1);
     }
- 
-    // Removes and returns the smallest valur 
 
-    // public void pop 
-    // let min = data.get[] 
+    // Remove and return the smallest value
     public int pop() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Cannot pop from an empty heap");
+            throw new NoSuchElementException();
         }
-        int min = data.get(0);
-        int last = data.remove(data.size() - 1);
-        if (!data.isEmpty()) {
-            data.set(0, last);
+
+        int smallest = data.get(0);
+
+        data.set(0, data.get(data.size() - 1));
+        data.remove(data.size() - 1);
+
+        if (!isEmpty()) {
             siftDown(0);
         }
-        return min;
+
+        return smallest;
     }
 
-     // Returns the smallest value without removing it
-     // if empty - throw exception 
-
-     // return data.get 
-
-     // get int size and return data.size
-
-     // make a boolean
+    // Return the smallest value without removing it
     public int peek() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Cannot peek at an empty heap");
+            throw new NoSuchElementException();
         }
+
         return data.get(0);
     }
- 
+
+    // Return the number of values
     public int size() {
         return data.size();
     }
- 
+
+    // Check if the heap is empty
     public boolean isEmpty() {
         return data.isEmpty();
     }
 
- 
-   
- 
-    // private method up
+    // Move a value up until it is in the correct position
     private void siftUp(int index) {
         while (index > 0) {
             int parent = (index - 1) / 2;
+
             if (data.get(index) >= data.get(parent)) {
                 break;
             }
+
             swap(index, parent);
             index = parent;
         }
     }
- 
-    // private method down
+
+    // Move a value down until it is in the correct position
     private void siftDown(int index) {
-        int n = data.size();
         while (true) {
             int left = 2 * index + 1;
-            int right = left + 1;
+            int right = 2 * index + 2;
             int smallest = index;
-            if (left < n && data.get(left) < data.get(smallest)) {
+
+            if (left < data.size() && data.get(left) < data.get(smallest)) {
                 smallest = left;
             }
-            if (right < n && data.get(right) < data.get(smallest)) {
+
+            if (right < data.size() && data.get(right) < data.get(smallest)) {
                 smallest = right;
             }
+
             if (smallest == index) {
                 break;
             }
+
             swap(index, smallest);
             index = smallest;
         }
     }
- 
 
-    // private method swap 
+    // Swap two values
     private void swap(int i, int j) {
-        int tmp = data.get(i);
+        int temp = data.get(i);
         data.set(i, data.get(j));
-        data.set(j, tmp);
+        data.set(j, temp);
     }
 }
