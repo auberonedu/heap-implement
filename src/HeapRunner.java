@@ -70,8 +70,12 @@ public class HeapRunner {
             } else if (choice.equals("s") || choice.equals("size")) {
                 // TODO: Call your "size" method and print the result
 
+                   System.out.println("Size: " + heap.size());
+
             } else if (choice.equals("e") || choice.equals("empty")) {
                 // TODO: Call your "isEmpty" method and print the result
+
+                     System.out.println("Is empty: " + heap.isEmpty());
 
             } else if (choice.equals("q") || choice.equals("quit")) {
                 break;
