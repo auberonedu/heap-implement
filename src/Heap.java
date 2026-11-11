@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * A min-heap. 
  * 
@@ -22,16 +24,20 @@
  *  - hold private instance variables
  */
 public class Heap {
-
-    
     //We will start out by making an ArrayList of integers to hold our data
     //With the root being held at index 0
+    private final ArrayList<Integer> heap = new ArrayList<>();
 
     //Distinguish the parent and children of this node using the index equations
     //2i + 1 = left child, 2i + 2 = right child, (i-1)//2 = parent
+    private int parent(int i) return (i-1)/2;
 
     //Implement each of these methods (bubbling up or down respectively): 
     //add(), peek(), pop(), isEmpty(), size()
+
+    //Throw errors for an empty Heap, so pop and peek would throw an exception 
+
+    //We need to add private helper methods: parent, leftChild, rightChild, bubbleUp, siftDown, and swap 
 
     
 
