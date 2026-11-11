@@ -54,7 +54,30 @@ public class Heap {
         }
         return min;
     }
-    
+
+     // Returns the smallest value without removing it
+     // if empty - throw exception 
+
+     // return data.get 
+
+     // get int size and return data.size
+
+     // make a boolean
+    public int peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Cannot peek at an empty heap");
+        }
+        return data.get(0);
+    }
+ 
+    public int size() {
+        return data.size();
+    }
+ 
+    public boolean isEmpty() {
+        return data.isEmpty();
+    }
+
  
    
  
