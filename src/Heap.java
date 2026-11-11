@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+
 /**
  * A min-heap. 
  * 
@@ -23,4 +27,98 @@
  */
 public class Heap {
 
+     private final List<Integer> data = new ArrayList<>();
+ 
+     //public void  add 
+     // data.add val
+
+     // data size - 1
+    public void add(int value) {
+        data.add(value);
+        siftUp(data.size() - 1);
+    }
+ 
+    // Removes and returns the smallest valur 
+
+    // public void pop 
+    // let min = data.get[] 
+    public int pop() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Cannot pop from an empty heap");
+        }
+        int min = data.get(0);
+        int last = data.remove(data.size() - 1);
+        if (!data.isEmpty()) {
+            data.set(0, last);
+            siftDown(0);
+        }
+        return min;
+    }
+
+     // Returns the smallest value without removing it
+     // if empty - throw exception 
+
+     // return data.get 
+
+     // get int size and return data.size
+
+     // make a boolean
+    public int peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Cannot peek at an empty heap");
+        }
+        return data.get(0);
+    }
+ 
+    public int size() {
+        return data.size();
+    }
+ 
+    public boolean isEmpty() {
+        return data.isEmpty();
+    }
+
+ 
+   
+ 
+    // private method up
+    private void siftUp(int index) {
+        while (index > 0) {
+            int parent = (index - 1) / 2;
+            if (data.get(index) >= data.get(parent)) {
+                break;
+            }
+            swap(index, parent);
+            index = parent;
+        }
+    }
+ 
+    // private method down
+    private void siftDown(int index) {
+        int n = data.size();
+        while (true) {
+            int left = 2 * index + 1;
+            int right = left + 1;
+            int smallest = index;
+            if (left < n && data.get(left) < data.get(smallest)) {
+                smallest = left;
+            }
+            if (right < n && data.get(right) < data.get(smallest)) {
+                smallest = right;
+            }
+            if (smallest == index) {
+                break;
+            }
+            swap(index, smallest);
+            index = smallest;
+        }
+    }
+ 
+
+    // private method swap 
+    private void swap(int i, int j) {
+        int tmp = data.get(i);
+        data.set(i, data.get(j));
+        data.set(j, tmp);
+    }
 }
