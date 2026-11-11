@@ -30,7 +30,9 @@ public class Heap {
 
     //Distinguish the parent and children of this node using the index equations
     //2i + 1 = left child, 2i + 2 = right child, (i-1)//2 = parent
-    private int parent(int i) return (i-1)/2;
+    private int parent(int i) {
+        return (i-1)/2;
+    }
 
     private int leftChild(int i) {
         return (2*i + 1);
@@ -39,11 +41,17 @@ public class Heap {
     private int rightChild(int i) {
         return (2*i + 2);
     }
-    
-
-
     //Implement each of these methods (bubbling up or down respectively): 
     //add(), peek(), pop(), isEmpty(), size()
+    public add(int value) {
+        heap.add(value);
+        bubbleUp(heap.size()-1);
+    }
+    private void bubbleUp(int i) {
+        while (i>0 && heap.get(parent(i)) > heap.get(i)){
+            //TODO implement swap method
+        }
+    }
 
     //Throw errors for an empty Heap, so pop and peek would throw an exception 
 
