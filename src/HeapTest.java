@@ -1,4 +1,7 @@
 import static org.junit.Assert.*;
+
+import java.util.NoSuchElementException;
+
 import org.junit.Test;
 
 public class HeapTest {
@@ -91,6 +94,30 @@ public void testMultipleNegativeNumbers() {
     assertEquals(5, heap.pop());
 
     assertTrue(heap.isEmpty());
+}
+
+// Tests removing the only element
+@Test
+public void testSingleElementHeap() {
+    Heap heap = new Heap();
+
+    heap.add(10);
+
+    assertEquals(10, heap.pop());
+    assertTrue(heap.isEmpty());
+    assertEquals(0, heap.size());
+}
+
+// Tests empty heap exceptions
+@Test
+public void testEmptyHeap() {
+    Heap heap = new Heap();
+
+    assertTrue(heap.isEmpty());
+    assertEquals(0, heap.size());
+
+    assertThrows(NoSuchElementException.class, () -> heap.pop());
+    assertThrows(NoSuchElementException.class, () -> heap.peek());
 }
 
 }
