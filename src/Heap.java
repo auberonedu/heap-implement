@@ -36,6 +36,8 @@ public class Heap {
     public void add(int element){
         heap.add(element);
         size++;
+
+
     }
 
     public void pop(){
@@ -54,6 +56,7 @@ public class Heap {
     }
 
     public boolean isEmpty(){
-        return false;
+        if(size>0) return false;
+        else return true;
     }
 }

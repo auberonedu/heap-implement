@@ -54,6 +54,34 @@ public class HeapTest {
     }
 
     // ----- Tests for size() ----- //
+    @Test 
+    public void testSizeOfSmallHeap(){
+        Heap heap = new Heap();
+        heap.add(1);
+        heap.add(2);
+        heap.add(3);
+        assertEquals(3, heap.size());
+    }
+
+    @Test 
+    public void testSizeOfEmptyHeap(){
+        Heap heap = new Heap();
+        assertEquals(0, heap.size());
+    }
 
     // ----- Tests for isEmpty() ----- //
+    @Test 
+    public void testHeapIsNotEmpty(){
+        Heap heap = new Heap();
+        heap.add(1);
+        heap.add(2);
+        heap.add(3);
+        assertFalse(heap.isEmpty());
+    }
+
+    @Test 
+    public void testHeapIsEmpty(){
+        Heap heap = new Heap();
+        assertTrue(heap.isEmpty());
+    }
 }
