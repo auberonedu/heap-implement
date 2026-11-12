@@ -7,7 +7,7 @@ import org.junit.Test;
 public class HeapTest {
     // new heap starts empty and size is 0.
     @Test
-    public void HeapIsEmpty() {
+    public void testHeapIsEmpty() {
         Heap heap = new Heap();
         
         assertTrue(heap.isEmpty());
