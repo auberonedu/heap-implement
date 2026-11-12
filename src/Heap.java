@@ -61,8 +61,27 @@ public class Heap {
         int parentIndex = 0;
         while(true){
             int leftChildIndex = 2 * parentIndex + 1;   
-
-    
+            int rightChildIndex = 2 * parentIndex + 2;
+            int smallestIndex = parentIndex;
+            if(leftChildIndex < heap.size() && heap.get(leftChildIndex) < heap.get(smallestIndex)){
+                smallestIndex = leftChildIndex;
+            }
+            if(rightChildIndex < heap.size() && heap.get(rightChildIndex) < heap.get(smallestIndex)){
+                smallestIndex = rightChildIndex;
+            }
+            if(smallestIndex == parentIndex){
+                break;
+            }
+            //swap parent and smallest child
+            int temp = heap.get(parentIndex);
+            heap.set(parentIndex, heap.get(smallestIndex));
+            heap.set(smallestIndex, temp);
+            //update parent index
+            parentIndex = smallestIndex;
+        }
+        return minValue;
     }
+
+     //Peeking at the front of the heap without removing the element O(1)
 }
 
