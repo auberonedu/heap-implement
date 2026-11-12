@@ -42,9 +42,9 @@ public class HeapRunner {
                 }
  
                 // TODO: Call your "add" method on the heap, passing in 'value'.
-                heap.add(6);
+                heap.add(value);
                 // TODO: Print message letting user know value was added
-                System.out.println("value was added");
+                System.out.println(value + "was added");
  
             } else if (choice.equals("p") || choice.equals("pop")) {
                 // TODO: Call your "pop" method and print the result.
