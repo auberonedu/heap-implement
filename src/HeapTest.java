@@ -52,4 +52,15 @@ public class HeapTest {
     assertEquals(5, heap.peek());
     assertEquals(4, heap.size());
   }
+  @Test
+public void testIsEmpty() {
+    Heap heap = new Heap();
+    assertTrue(heap.isEmpty());
+    
+    heap.add(1);
+    assertFalse(heap.isEmpty());
+    
+    heap.pop();
+    assertTrue(heap.isEmpty());
+}
 }
