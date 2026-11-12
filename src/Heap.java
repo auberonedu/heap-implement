@@ -30,11 +30,11 @@ public class Heap {
     // HELPER METHODS
     private int getLeftChildIndex(int index) { return 2 * index + 1; }
     private int getRightChildIndex(int index) { return 2 * index + 2; }
-    private int getParentIndex(int index) { return index / 2; }
+    private int getParentIndex(int index) { return (index - 1) / 2; }
 
     private boolean hasLeftChild(int index) { return getLeftChildIndex(index) < heap.size(); }
     private boolean hasRightChild(int index) { return getRightChildIndex(index) < heap.size(); }
-    private boolean hasParent(int index) { return getParentIndex(index) >= 0; }
+    private boolean hasParent(int index) { return getParentIndex(index) > 0; }
 
     private int left(int index) { return heap.get(getLeftChildIndex(index)); }
     private int right(int index) { return heap.get(getRightChildIndex(index)); }
@@ -102,8 +102,8 @@ public class Heap {
     }
 
     // empty
-    public void empty() {
-        heap = new ArrayList<>();
+    public boolean empty() {
+        return heap.size() == 0;
     }
 
 

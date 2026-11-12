@@ -57,8 +57,8 @@ public class HeapRunner {
             } else if (choice.equals("s") || choice.equals("size")) {
                 System.out.println(heap.size());
             } else if (choice.equals("e") || choice.equals("empty")) {
-                heap.empty();
-                System.out.println("Emptied heap.");
+                String output = heap.empty() ? "Heap is empty." : "Heap is not empty.";
+                System.out.println(output);
             } else if (choice.equals("q") || choice.equals("quit")) {
                 break;
 
