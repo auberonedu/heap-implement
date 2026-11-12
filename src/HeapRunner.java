@@ -20,7 +20,7 @@ public class HeapRunner {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // TODO: Construct your Heap here.
+        Heap heap = new Heap();
 
         System.out.println("=== Heap Tester ===");
 
@@ -39,23 +39,26 @@ public class HeapRunner {
                     continue;
                 }
  
-                // TODO: Call your "add" method on the heap, passing in 'value'.
-                // TODO: Print message letting user know value was added
+                heap.add(value);
+                System.out.println(value + " was added to the heap.");
  
             } else if (choice.equals("p") || choice.equals("pop")) {
-                // TODO: Call your "pop" method and print the result.
-                // Properly handle the case of an empty heap!
-
+                try {
+                    System.out.println(heap.pop());
+                } catch (Exception e) {
+                    System.out.println("Heap is empty!");
+                }
             } else if (choice.equals("k") || choice.equals("peek")) {
-                // TODO: Call your "peek" method and print the result
-                // Properly handle the case of an empty heap!
-
+                try {
+                    System.out.println(heap.peek());
+                } catch (Exception e) {
+                    System.out.println("Heap is empty!");
+                }
             } else if (choice.equals("s") || choice.equals("size")) {
-                // TODO: Call your "size" method and print the result
-
+                System.out.println(heap.size());
             } else if (choice.equals("e") || choice.equals("empty")) {
-                // TODO: Call your "isEmpty" method and print the result
-
+                heap.empty();
+                System.out.println("Emptied heap.");
             } else if (choice.equals("q") || choice.equals("quit")) {
                 break;
 
