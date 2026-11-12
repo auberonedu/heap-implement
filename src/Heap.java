@@ -68,4 +68,43 @@ public class Heap {
         data.set(i, data.get(j));
         data.set(j, temp);
     }
+
+    public int pop() {
+        if (isEmpty()) {
+            throw new IllegalStateException("cannot pop from empty heap.");
+        }
+
+        int min = data.get(0);
+        int last = data.remove(data.size() - 1);
+
+        if (!isEmpty()) {
+            data.set(0, last);
+            percolateDown(0);
+        }
+
+        return min;
+    }
+
+    private void percolateDown(int index) {
+        int size = data.size();
+        while (true) {
+            int left = 2 * index + 1;
+            int right = 2 * index + 2;
+            int smallest = index;
+
+            if (left < size && data.get(left) < data.get(smallest)) {
+                smallest = left;
+            }
+            if (right < size && data.get(right) < data.get(smallest)) {
+                smallest = right;
+            }
+
+            if (smallest != index) {
+                swap(index, smallest);
+                index = smallest;
+            } else {
+                break;
+            }
+        }
+    }
 }
