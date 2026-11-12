@@ -43,6 +43,17 @@ public class Heap {
 
     // METHODS
     // add
+    public void add(int value){
+        heap.add(value);
+        size++;
+
+        int index = size - 1;
+        while(hasParent(index) && parent(index) > heap.get(index)){
+            int parentIndex = getParentIndex(index);
+            swap(index, parentIndex); 
+            index = parentIndex;
+        }
+    }
 
 
     // pop
