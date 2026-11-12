@@ -90,6 +90,7 @@ public class Heap {
         }
     }
 
+    //Throw errors for an empty Heap, so pop and peek would throw an exception 
     public int peek() {
 
         if (!heap.isEmpty()) {
@@ -99,8 +100,25 @@ public class Heap {
         throw new NoSuchElementException("The heap is empty");
     }
 
+    public int pop() {
+        if(isEmpty()){
+            throw new NoSuchElementException ("The heap is empty");
+        }
+        int min = heap.get(0);
+        int last = heap.remove(heap.size() - 1);
+        
+        if(!isEmpty()) {
+            heap.set(0, last);
+            siftDown(0);
+        }
+        return min;
+    }
+    public boolean isEmpty(){
+        return heap.isEmpty();
+    }
 
-    //Throw errors for an empty Heap, so pop and peek would throw an exception 
+
+    
 
     //We need to add private helper methods: parent, leftChild, rightChild, bubbleUp, siftDown, and swap 
 
