@@ -57,7 +57,13 @@ public class Heap {
 
 
     // peek
-
+    private int peek() {
+        if (size == 0) {
+            System.out.println("Heap is empty!");
+            return -1;
+        }
+        return heap.getFirst();
+    }
 
     // size
 
