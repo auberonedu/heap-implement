@@ -77,8 +77,7 @@ public class HeapRunner {
 
             } else if (choice.equals("e") || choice.equals("empty")) {
                 // TODO: Call your "isEmpty" method and print the result
-                heap.isEmpty();
-                System.out.println();
+                System.out.println(heap.isEmpty());
 
             } else if (choice.equals("q") || choice.equals("quit")) {
                 break;
