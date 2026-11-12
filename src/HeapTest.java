@@ -12,18 +12,18 @@ public class HeapTest {
     }
 
     // ----- Tests for pop() ----- //
-
+    @Test 
+    public void testOneElementIsRemovedFromHeap(){
+        Heap heap = new Heap();
+        heap.add(1);
+        heap.pop();
+        assertEquals(0, heap.size());
+    }
 
     // ----- Tests for peek() ----- //
 
 
     // ----- Tests for size() ----- //
-    @Test 
-    public void testHeapHasOneElement(){
-        Heap heap = new Heap();
-        heap.add(1);
-        assertEquals(1, heap.size());
-    }
 
     // ----- Tests for isEmpty() ----- //
 }

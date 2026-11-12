@@ -38,12 +38,15 @@ public class Heap {
         size++;
     }
 
-    public int pop(){
-        return -1;
+    public void pop(){
+        if(heap.get(0) != null){
+            heap.remove(0);
+            size--;
+        }
     }
 
     public int peek(){
-        return -1;
+        return heap.get(0);
     }
 
     public int size(){
