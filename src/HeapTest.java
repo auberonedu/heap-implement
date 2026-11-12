@@ -15,5 +15,16 @@ public class HeapTest {
     assertEquals(10, heap.peek());
   }
 
+  @Test
+  public void testPopRemovesAndReturnsRoot() {
+    Heap heap = new Heap();
+    heap.add(5);
 
+
+    int poppedValue = heap.pop();
+    assertEquals(5, poppedValue);
+
+
+    assertTrue(heap.isEmpty());
+  }
 }
