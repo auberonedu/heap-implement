@@ -14,4 +14,14 @@ public class HeapTest {
         Heap heap = new Heap();
         heap.peek();
     }
+
+    @Test
+    public void testInsertAndPeekMin() {
+        Heap heap = new Heap();
+        heap.insert(10);
+        heap.insert(5);
+        heap.insert(20);
+        assertEquals(5, heap.peek());
+        assertEquals(3, heap.size());
+    }
 }

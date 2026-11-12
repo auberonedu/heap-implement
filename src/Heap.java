@@ -45,4 +45,27 @@ public class Heap {
         }
         return data.get(0);
     }
+
+    public void insert(int value) {
+        data.add(value);
+        percolateUp(data.size() - 1);
+    }
+
+    private void percolateUp(int index) {
+        while (index > 0) {
+            int parentIndex = (index - 1) / 2;
+            if (data.get(index) < data.get(parentIndex)) {
+                swap(index, parentIndex);
+                index = parentIndex;
+            } else {
+                break;
+            }
+        }
+    }
+
+    private void swap(int i, int j) {
+        int temp = data.get(i);
+        data.set(i, data.get(j));
+        data.set(j, temp);
+    }
 }
