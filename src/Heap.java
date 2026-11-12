@@ -35,9 +35,6 @@ public class Heap {
   public void pop() {
     int lastValue = list.remove(list.size() - 1);
 
-    if (list.isEmpty()) {
-      return;
-    }
     if (!list.isEmpty()) {
       lastValue = list.set(0, lastValue);
       int currentIndex = 0;
@@ -56,9 +53,9 @@ public class Heap {
           break;
         }
 
-        int childValue = list.get(currentIndex);
+        int currentValue = list.get(currentIndex);
         list.set(currentIndex, list.get(smallerChildIndex));
-        list.set(smallerChildIndex, childValue);
+        list.set(smallerChildIndex, currentValue);
         currentIndex = smallerChildIndex;
       }
       }
