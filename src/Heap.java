@@ -1,3 +1,7 @@
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A min-heap. 
  * 
@@ -23,4 +27,75 @@
  */
 public class Heap {
 
+    List<Integer> items = new ArrayList<>();
+
+    public void swap(int indexOne , int indexTwo){
+        int item = items.get(indexOne);
+        items.set(indexOne, items.get(indexTwo));
+        items.set(indexTwo, item);
+
+    }
+    public void addingValue( int item){
+        items.add(item);
+        int newValueIndex = items.size()-1;
+        int parent = (newValueIndex-1) /2;
+
+        int childValue = items.get(newValueIndex);
+        int parentValue = items.get(parent);
+
+        while (newValueIndex > 0 && childValue<parentValue) {
+                swap(newValueIndex, parent);
+                newValueIndex = parent;
+                parent = (newValueIndex-1)/2;
+                childValue = items.get(newValueIndex);
+                parentValue = items.get(parent);
+
+        }
+    }
+    public int peek(){
+        if(items.isEmpty()) throw new IllegalStateException();
+        return items.get(0);
+
+    }
+    public int getSize(){
+        return items.size();
+    }
+
+    public boolean  checkIfEmpty(){
+        return items.isEmpty();
+    }
+
+    public int popping(){
+        if(items.isEmpty()) throw new IllegalStateException();
+        int rootItem = items.get(0);
+        int lastElement = items.get(items.size()-1);
+        items.set(0, lastElement);
+        items.remove(items.size() -1);
+
+        int currentIdex = 0;
+        
+
+        while(true){
+            int leftChild = 2 *currentIdex + 1;
+            int rightChild = 2 *currentIdex + 2;
+
+            if (leftChild >= items.size()) {
+                break;
+    }
+            int smallerChild = leftChild;
+
+
+            if (rightChild < items.size() && items.get(rightChild) < items.get(leftChild)) {
+            smallerChild = rightChild;
+        }
+            if (items.get(currentIdex) <= items.get(smallerChild)) {
+            break;
+        }
+            swap(currentIdex, smallerChild);
+            currentIdex = smallerChild;
+        }
+
+
+        return rootItem;
+    }
 }
