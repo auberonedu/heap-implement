@@ -62,7 +62,7 @@ public class Heap {
         int index = 0;
         while(hasLeftChild(index)) {
             int smaller = getLeftChildIndex(index);
-            if (hasRightChild(index) && left(index) < right(index)) {
+            if (hasRightChild(index) && left(index) > right(index)) {
                 smaller = getRightChildIndex(index);
             }
 
