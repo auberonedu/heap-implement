@@ -25,7 +25,6 @@ import java.util.ArrayList;
  */
 public class Heap {
     // VALUES
-    private int size = 0;
     List<Integer> heap = new ArrayList<>();
 
     // HELPER METHODS
@@ -45,12 +44,12 @@ public class Heap {
     // add
     public void add(int value){
         heap.add(value);
-        size++;
-        bubbleUp(size - 1);
+        bubbleUp();
     }
 
     //bubbleUp
-    private void bubbleUp(int index){
+    private void bubbleUp() {
+        int index = heap.size() - 1;
         while(hasParent(index) && parent(index) > heap.get(index)){
             int parentIndex = getParentIndex(index);
             swap(index, parentIndex);
@@ -78,9 +77,8 @@ public class Heap {
 
     // pop
     private int pop() {
-        if (size == 0) throw new IllegalStateException("Heap is empty");
+        if (heap.size() == 0) throw new IllegalStateException("Heap is empty");
         int pop = heap.removeFirst();
-        size--;
         bubbleDown();
         return pop;
     }
@@ -94,13 +92,13 @@ public class Heap {
 
     // peek
     private int peek() {
-        if (size == 0) throw new IllegalStateException("Heap is empty");
+        if (heap.size() == 0) throw new IllegalStateException("Heap is empty");
         return heap.getFirst();
     }
 
     // size
     private int size() {
-        return size;
+        return heap.size();
     }
 
     // empty
