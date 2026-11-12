@@ -25,6 +25,20 @@ import java.util.ArrayList;
  */
 public class Heap {
 
-    ArrayList<Integer> heap = new ArrayList<>();
+    private ArrayList<Integer> heap = new ArrayList<>();
+
+    //Adding a new value to the heap  O(log(n))
+    public void add(int value){
+        //insert new integer at the end of the list
+        heap.add(value);
+    }
+
+
+
+ 
+
+   
+
 
 }
+
