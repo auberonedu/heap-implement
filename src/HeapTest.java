@@ -11,7 +11,6 @@ public class HeapTest {
 
     assertEquals(10, heap.peek());
 
-
     assertEquals(10, heap.peek());
   }
 
@@ -20,16 +19,14 @@ public class HeapTest {
     Heap heap = new Heap();
     heap.add(5);
 
-
     int poppedValue = heap.pop();
     assertEquals(5, poppedValue);
-
 
     assertTrue(heap.isEmpty());
   }
 
   @Test
-public void testSize() {
+  public void testSize() {
     Heap heap = new Heap();
     assertEquals(0, heap.size());
 
@@ -41,5 +38,18 @@ public void testSize() {
 
     heap.pop();
     assertEquals(1, heap.size());
-}
+  }
+
+  @Test
+  public void testAddKeepsMinimumAtRoot() {
+    Heap heap = new Heap();
+
+    heap.add(20);
+    heap.add(5);
+    heap.add(15);
+    heap.add(10);
+
+    assertEquals(5, heap.peek());
+    assertEquals(4, heap.size());
+  }
 }
