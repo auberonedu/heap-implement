@@ -27,19 +27,40 @@ import java.util.List;
 public class Heap {
   private List<Integer> list = new ArrayList<>();
 
-
   public int peek() {
-   return list.get(0);
+    return list.get(0);
   }
 
-//     public int pop() {
-//     }
+  public int pop() {
+    int minValue = list.get(0);
+    int lastValue = list.size() - 1;
 
-//     public int add() {
+    if (!list.isEmpty()) {
+      lastValue = list.set(0, lastValue);
+      int currentIndex = 0;
+      int leftChildIndex = (2 * currentIndex) + 1;
+      int rightChildIndex = (2 * currentIndex) + 2;
+      int smallerChildIndex = leftChildIndex;
+      while (leftChildIndex < list.size()) {
+        if (list.get(leftChildIndex) < list.get(rightChildIndex)) {
+          smallerChildIndex = rightChildIndex;
+        }
+        if (list.get(currentIndex) > list.get(smallerChildIndex)) {
+          currentIndex = smallerChildIndex;
+        }
+        break;
+      }
 
-//   }
-//   public int isEmpty(){
-//  {  
-//     }
-//   }
+    }
+
+    return minValue;
+  }
+
+  // public int add() {
+
+  // }
+  // public int isEmpty(){
+  // {
+  // }
+  // }
 }
