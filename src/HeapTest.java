@@ -10,7 +10,7 @@ public class HeapTest {
 
     }
 
-    @Test
+    @Test(expected = IllegalStateException.class)
     public void addIncreaseSize(){
         Heap heap = new Heap();
         heap.add(5);
@@ -20,7 +20,7 @@ public class HeapTest {
         assertFalse(heap.isEmpty());
     }
 
-    @Test
+    @Test(expected = IllegalStateException.class)
     public void popReturnsMinAndRemovesIt() {
         Heap heap = new Heap();
         heap.add(5);
@@ -41,5 +41,29 @@ public class HeapTest {
     public void peekOnEmpty(){
         Heap heap = new Heap();
         heap.peek();
+    }
+
+    @Test
+    public void peekDoesNotRemove() {
+    Heap heap = new Heap();
+    heap.add(8);
+    heap.add(3);
+    heap.add(5);
+
+    // Your assertions go here
+    assertEquals(3,heap.peek());
+    assertEquals(3,heap.size());
+    }
+
+    @Test
+    public void popReturnsSortedOrder() {
+        Heap heap = new Heap();
+        heap.add(8);
+        heap.add(3);
+        heap.add(5);
+        heap.add(1);
+
+        assertEquals(1,heap.pop());
+        assertEquals(3,heap.size());
     }
 }

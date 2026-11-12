@@ -56,8 +56,6 @@ public class HeapRunner {
                     System.out.println("Cannot pop from an empty heap");
                 }
 
-                }
-
             } else if (choice.equals("k") || choice.equals("peek")) {
                 // TODO: Call your "peek" method and print the result
                 // Properly handle the case of an empty heap!
@@ -67,8 +65,8 @@ public class HeapRunner {
 
                 } catch (IllegalStateException e) {
                     System.out.println(e.getMessage());
+
                 }
-}
 
             } else if (choice.equals("s") || choice.equals("size")) {
                 // TODO: Call your "size" method and print the result
