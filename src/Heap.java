@@ -33,9 +33,6 @@ public class Heap {
   }
 
   public int pop() {
-    if (list.isEmpty()) {
-      throw new NoSuchElementException("Empty heap");
-    }
     int minValue = list.get(0);
     int lastValue = list.remove(list.size() - 1);
 
@@ -49,10 +46,12 @@ public class Heap {
       int rightChildIndex = (2 * currentIndex) + 2;
       int smallerChildIndex = leftChildIndex;
       while (leftChildIndex < list.size()) {
-        if (list.get(leftChildIndex) < list.get(rightChildIndex)) {
+        if (rightChildIndex < 0 &&list.get(leftChildIndex) < list.get(rightChildIndex)) {
           smallerChildIndex = rightChildIndex;
         }
         if (list.get(currentIndex) > list.get(smallerChildIndex)) {
+        list.set(currentIndex, list.get(smallerChildIndex));
+        list.set(smallerChildIndex, currentIndex);
           currentIndex = smallerChildIndex;
         }
         break;
@@ -66,9 +65,6 @@ public class Heap {
   }
 
   public void add(int value) {
-    if (list.isEmpty()) {
-      throw new NoSuchElementException("Empty heap");
-    }
     list.add(value);
     int currentIndex = list.size() - 1;
 
