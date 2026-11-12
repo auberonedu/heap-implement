@@ -20,7 +20,7 @@ public class HeapRunner {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // TODO: Construct your Heap here.
+        Heap heap = new Heap();
 
         System.out.println("=== Heap Tester ===");
 
@@ -39,22 +39,28 @@ public class HeapRunner {
                     continue;
                 }
  
-                // TODO: Call your "add" method on the heap, passing in 'value'.
-                // TODO: Print message letting user know value was added
+                heap.add(value);
+                System.out.println(value + " has been added to the heap.");
  
             } else if (choice.equals("p") || choice.equals("pop")) {
-                // TODO: Call your "pop" method and print the result.
-                // Properly handle the case of an empty heap!
+                int pop = heap.pop();
+                System.out.println("You have removed " + pop + " from the heap.");
 
             } else if (choice.equals("k") || choice.equals("peek")) {
-                // TODO: Call your "peek" method and print the result
-                // Properly handle the case of an empty heap!
+                int peek = heap.peek();
+                System.out.println("The value " + peek + " is at the top of the heap.");
 
             } else if (choice.equals("s") || choice.equals("size")) {
-                // TODO: Call your "size" method and print the result
+                int size = heap.size();
+                System.out.println("Your heap has " + size + " values in it.");
 
             } else if (choice.equals("e") || choice.equals("empty")) {
-                // TODO: Call your "isEmpty" method and print the result
+                boolean empty = heap.isEmpty();
+                if (empty) {
+                    System.out.println("Your heap is empty.");
+                } else {
+                    System.out.println("Your heap is not empty.");
+                }
 
             } else if (choice.equals("q") || choice.equals("quit")) {
                 break;
