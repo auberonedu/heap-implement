@@ -28,7 +28,7 @@ import java.util.NoSuchElementException;
 public class Heap {
 
   // backing array
-  private List<Integer> data;
+  private final List<Integer> data;
 
   public Heap() {
     data = new ArrayList<>();
