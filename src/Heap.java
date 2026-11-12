@@ -33,7 +33,13 @@ public class Heap {
 
   public int pop() {
     int minValue = list.get(0);
-    int lastValue = list.size() - 1;
+    int lastValue = list.remove(list.size() - 1);
+
+    if (list.isEmpty()) {
+    return minValue;
+
+    
+}
 
     if (!list.isEmpty()) {
       lastValue = list.set(0, lastValue);
