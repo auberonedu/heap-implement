@@ -14,4 +14,16 @@ public class HeapTest {
 
         assertEquals(0, actual);
     }
+
+    @Test
+    public void testHeapPopMethodWithoutNeedingSorted() {
+        Heap minHeap = new Heap();
+
+        minHeap.add(0);
+        minHeap.add(1);
+
+        int actual = minHeap.pop();
+
+        assertEquals(0, actual);
+    }
 }
