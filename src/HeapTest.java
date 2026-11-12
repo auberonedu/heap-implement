@@ -27,4 +27,19 @@ public class HeapTest {
 
     assertTrue(heap.isEmpty());
   }
+
+  @Test
+public void testSize() {
+    Heap heap = new Heap();
+    assertEquals(0, heap.size());
+
+    heap.add(10);
+    assertEquals(1, heap.size());
+
+    heap.add(20);
+    assertEquals(2, heap.size());
+
+    heap.pop();
+    assertEquals(1, heap.size());
+}
 }
