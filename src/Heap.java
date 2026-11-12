@@ -37,7 +37,21 @@ public class Heap {
         heap.add(element);
         size++;
 
+        int elementIndex = heap.size()-1;
 
+        while(elementIndex > 0){
+            int parent = (elementIndex - 1) / 2;
+            
+            if(element < heap.get(parent)){
+                int smallerElement = heap.get(elementIndex);
+                heap.set(elementIndex, heap.get(parent));
+                heap.set(parent, smallerElement);
+
+                elementIndex = parent;
+            }else{
+                break;
+            }
+        }
     }
 
     public int pop(){
@@ -64,5 +78,9 @@ public class Heap {
     public boolean isEmpty(){
         if(size>0) return false;
         else return true;
+    }
+
+    public String printHeap(){
+        return heap.toString();
     }
 }

@@ -14,8 +14,22 @@ public class HeapTest {
     @Test 
     public void testAddMultipleElementToHeapWithMinAtTop(){
         Heap heap = new Heap();
-        heap.add(1);
-        assertEquals(1, heap.size());
+        heap.add(10);
+        heap.add(7);
+        heap.add(5);
+        heap.add(3);
+        heap.add(10);
+        assertEquals(3, heap.peek());
+    }
+
+    @Test 
+    public void testAddMultipleSameMinElementToHeapWithMinAtTop(){
+        Heap heap = new Heap();
+        heap.add(10);
+        heap.add(3);
+        heap.add(10);
+        heap.add(3);
+        assertEquals(3, heap.peek());
     }
 
     // ----- Tests for pop() ----- //
@@ -96,5 +110,18 @@ public class HeapTest {
         heap.pop();
         heap.pop();
         assertTrue(heap.isEmpty());
+    }
+
+    @Test
+    public void testHeapIsInCorrectOrder(){
+        Heap heap = new Heap();
+        heap.add(4);
+        heap.add(6);
+        heap.add(1);
+        heap.add(3);
+        heap.add(5);
+        heap.add(1);
+        heap.add(2);
+        assertEquals("[1, 3, 1, 6, 5, 4, 2]", heap.printHeap());
     }
 }
