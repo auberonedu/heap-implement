@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * A min-heap.
@@ -25,21 +26,22 @@ import java.util.List;
  * - hold private instance variables
  */
 public class Heap {
-  private List<Integer> list = new ArrayList<>();
+  private final List<Integer> list = new ArrayList<>();
 
   public int peek() {
     return list.get(0);
   }
 
   public int pop() {
+    if (list.isEmpty()) {
+      throw new NoSuchElementException("Empty heap");
+    }
     int minValue = list.get(0);
     int lastValue = list.remove(list.size() - 1);
 
     if (list.isEmpty()) {
       return minValue;
-
     }
-
     if (!list.isEmpty()) {
       lastValue = list.set(0, lastValue);
       int currentIndex = 0;
@@ -63,7 +65,10 @@ public class Heap {
     return list.size();
   }
 
-  public int add(int value) {
+  public void add(int value) {
+    if (list.isEmpty()) {
+      throw new NoSuchElementException("Empty heap");
+    }
     list.add(value);
     int currentIndex = list.size() - 1;
 
@@ -79,15 +84,10 @@ public class Heap {
         break;
       }
     }
-    return value;
   }
 
   public boolean isEmpty() {
-    if (list.size() == 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return list.isEmpty();
   }
 
 }
