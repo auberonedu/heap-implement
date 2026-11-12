@@ -57,7 +57,13 @@ public class Heap {
         return items.get(0);
 
     }
+    public int getSize(){
+        return items.size();
+    }
 
+    public boolean  checkIfEmpty(){
+        return items.isEmpty();
+    }
 
 
 
