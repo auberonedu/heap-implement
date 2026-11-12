@@ -21,6 +21,7 @@ public class HeapRunner {
         Scanner scanner = new Scanner(System.in);
 
         // TODO: Construct your Heap here.
+        Heap heap = new Heap();
 
         System.out.println("=== Heap Tester ===");
 
@@ -39,12 +40,19 @@ public class HeapRunner {
                     continue;
                 }
  
-                // TODO: Call your "add" method on the heap, passing in 'value'.
-                // TODO: Print message letting user know value was added
- 
+            // TODO: Call your "add" method on the heap, passing in 'value'.
+            // TODO: Print message letting user know value was added
+            heap.add(value);
+            System.out.println("Added" + value + "to heap");
+
             } else if (choice.equals("p") || choice.equals("pop")) {
                 // TODO: Call your "pop" method and print the result.
                 // Properly handle the case of an empty heap!
+                if(heap.isEmpty()){
+                    System.out.println("Empty HEAP ");
+                }else {
+                    System.out.println("Popped this number: " + heap.pop());
+                }
 
             } else if (choice.equals("k") || choice.equals("peek")) {
                 // TODO: Call your "peek" method and print the result
