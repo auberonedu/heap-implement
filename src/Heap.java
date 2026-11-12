@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class Heap {
     // VALUES
     private int size = 0;
-    List<Integer> heap = new ArrayList();
+    List<Integer> heap = new ArrayList<>();
 
     // HELPER METHODS
     private int getLeftChildIndex(int index) { return 2 * index + 1; }
@@ -81,6 +81,8 @@ public class Heap {
     }
 
     // empty
-
+    private void empty() {
+        heap = new ArrayList<>();
+    }
 
 }
