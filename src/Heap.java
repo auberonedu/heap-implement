@@ -48,6 +48,14 @@ public class Heap {
     // pop
 
 
+    // swap
+    private void swap(int a, int b) {
+        int t = heap.get(a);
+        heap.set(a, heap.get(b));
+        heap.set(b, t);
+    }
+
+
     // peek
 
 
