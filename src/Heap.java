@@ -29,10 +29,16 @@ public class Heap {
   private final List<Integer> list = new ArrayList<>();
 
   public int peek() {
+      if (list.isEmpty()) {
+      throw new NoSuchElementException("heap is empty");
+    }  
     return list.get(0);
   }
 
   public void pop() {
+        if (list.isEmpty()) {
+      throw new NoSuchElementException("heap is empty");
+    }
     int lastValue = list.remove(list.size() - 1);
 
     if (!list.isEmpty()) {
