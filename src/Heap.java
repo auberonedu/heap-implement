@@ -57,12 +57,30 @@ public class Heap {
         }
     }
 
+    // bubbleDown
+    private void bubbleDown() {
+        int index = 0;
+        while(hasLeftChild(index)) {
+            int smaller = getLeftChildIndex(index);
+            if (hasRightChild(index) && left(index) < right(index)) {
+                smaller = getRightChildIndex(index);
+            }
+
+            if (heap.get(index) < heap.get(smaller)) {
+                break;
+            } else {
+                swap (index, smaller);
+            }
+            index = smaller;
+        }
+    }
+
     // pop
     private int pop() {
         if (size == 0) throw new IllegalStateException("Heap is empty");
         int pop = heap.removeFirst();
         size--;
-        // bubbleDown()
+        bubbleDown();
         return pop;
     }
 
