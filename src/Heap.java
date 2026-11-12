@@ -55,7 +55,8 @@ public class Heap {
 
     return minValue;
   }
-  public int size(int size){
+
+  public int size(int size) {
     size = list.size();
     return size;
   }
@@ -63,8 +64,12 @@ public class Heap {
   // public int add() {
 
   // }
-  // public int isEmpty(){
-  // {
-  // }
-  // }
+  public boolean isEmpty() {
+    if (list.size() == 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
