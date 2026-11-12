@@ -55,7 +55,6 @@ public class Heap {
         }
     }
 
-
     // pop
 
 
@@ -77,7 +76,9 @@ public class Heap {
     }
 
     // size
-
+    private int size() {
+        return size;
+    }
 
     // empty
 
