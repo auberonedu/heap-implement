@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A min-heap. 
@@ -25,7 +26,7 @@ import java.util.ArrayList;
  */
 public class Heap {
 
-    private ArrayList<Integer> heap = new ArrayList<>();
+    private final List<Integer> heap = new ArrayList<>();
 
     //Adding a new value to the heap  O(log(n))
     public void add(int value){
