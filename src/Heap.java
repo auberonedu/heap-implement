@@ -1,40 +1,41 @@
 /**
- * A min-heap backed by a List.
- *
- * A min-heap keeps the smallest element at the root and guarantees:
- * - add: O(log n)
- * - pop: O(log n)
- * - peek: O(1)
- * - size: O(1)
- * - isEmpty: O(1)
+ * A min-heap. 
+ * 
+ * Must contain functionality for the following: (n = # of elements in heap)
+ * 
+ * Adding a new value to the heap  O(log(n))
+ * Popping the front of the heap O(log(n))
+ * Peeking at the front of the heap without removing the element O(1)
+ * Getting the size of the heap O(1)
+ * Checking whether the heap is empty O(1)
+ * 
+ * 
+ * The Heap must hold ints
+ * 
+ * Use List/ArrayList as a backing array, but DO NOT use the 
+ * PriorityQueue class. Do not make Node objects, use array
+ * indexing instead.
+ * 
+ * It is up to you to make design decisions about how to:
+ *  - name methods
+ *  - determine return value and argument types
+ *  - hold private instance variables
  */
 import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Heap {
-    private final List<Integer> data;
+    private ArrayList<Integer> data;
 
     public Heap() {
         data = new ArrayList<>();
     }
 
-    /**
-     * Adds a value to the heap and restores the heap property.
-     *
-     * @param value the integer to insert
-     */
     public void add(int value) {
         data.add(value);
         bubbleUp(data.size() - 1);
     }
 
-    /**
-     * Removes and returns the minimum value in the heap.
-     *
-     * @return the minimum value in the heap
-     * @throws NoSuchElementException if the heap is empty
-     */
     public int pop() {
         if (isEmpty()) {
             throw new NoSuchElementException("Heap is empty.");
@@ -51,12 +52,6 @@ public class Heap {
         return min;
     }
 
-    /**
-     * Returns the minimum value in the heap without removing it.
-     *
-     * @return the minimum value in the heap
-     * @throws NoSuchElementException if the heap is empty
-     */
     public int peek() {
         if (isEmpty()) {
             throw new NoSuchElementException("Heap is empty.");
@@ -65,20 +60,10 @@ public class Heap {
         return data.get(0);
     }
 
-    /**
-     * Returns the number of elements in the heap.
-     *
-     * @return the current heap size
-     */
     public int size() {
         return data.size();
     }
 
-    /**
-     * Checks whether the heap contains any elements.
-     *
-     * @return true if the heap is empty, false otherwise
-     */
     public boolean isEmpty() {
         return data.isEmpty();
     }
@@ -119,15 +104,15 @@ public class Heap {
         }
     }
 
-    private static int parentIndex(int index) {
+    private int parentIndex(int index) {
         return (index - 1) / 2;
     }
 
-    private static int leftChildIndex(int index) {
+    private int leftChildIndex(int index) {
         return 2 * index + 1;
     }
 
-    private static int rightChildIndex(int index) {
+    private int rightChildIndex(int index) {
         return 2 * index + 2;
     }
 
