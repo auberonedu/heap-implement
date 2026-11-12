@@ -65,5 +65,40 @@ public class HeapTest {
 
         assertEquals(1,heap.pop());
         assertEquals(3,heap.size());
+
+        assertEquals(3, heap.pop());
+        assertEquals(5, heap.pop());
+        assertEquals(5, heap.pop());
+        assertTrue(heap.isEmpty());
     }
+
+    @Test
+    public void duplicateValues() {
+    Heap heap = new Heap();
+    heap.add(4);
+    heap.add(2);
+    heap.add(4);
+    heap.add(2);
+
+    assertEquals(2, heap.pop());
+    assertEquals(2, heap.pop());
+    assertEquals(4, heap.pop());
+    assertEquals(4, heap.pop());
+    assertTrue(heap.isEmpty());
+}
+
+    @Test
+    public void negativeValues() {      
+    Heap heap = new Heap();
+    heap.add(5);
+    heap.add(-3);
+    heap.add(0);
+    heap.add(-8);
+    assertEquals(-8, heap.pop());
+    assertEquals(-3, heap.pop());
+    assertEquals(0, heap.pop());
+    assertEquals(-3, heap.pop());
+    assertEquals(5, heap.pop());
+    assertTrue(heap.isEmpty());
+}
 }
