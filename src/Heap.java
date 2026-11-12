@@ -91,18 +91,18 @@ public class Heap {
     }
 
     // peek
-    private int peek() {
+    public int peek() {
         if (heap.size() == 0) throw new IllegalStateException("Heap is empty");
         return heap.getFirst();
     }
 
     // size
-    private int size() {
+    public int size() {
         return heap.size();
     }
 
     // empty
-    private void empty() {
+    public void empty() {
         heap = new ArrayList<>();
     }
 
