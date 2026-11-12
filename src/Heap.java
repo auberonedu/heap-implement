@@ -94,5 +94,11 @@ public class Heap {
      public int size(){
         return heap.size();
      }
+
+     //Checking whether the heap is empty O(1)
+     public boolean isEmpty(){
+        return heap.isEmpty();
+     }
+
 }
 
