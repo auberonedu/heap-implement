@@ -1,4 +1,7 @@
 import static org.junit.Assert.*;
+
+import java.util.NoSuchElementException;
+
 import org.junit.Test;
 
 public class HeapTest {
@@ -25,6 +28,12 @@ public class HeapTest {
         int actual = minHeap.pop();
 
         assertEquals(0, actual);
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testPopOnEmptyHeapThrows() {
+        Heap heap = new Heap();
+        heap.pop();
     }
      @Test
     public void peekReturnsSmallestWithoutRemoving() {
@@ -54,6 +63,13 @@ public class HeapTest {
         h.pop();                      
         assertEquals(7, h.peek());   
 }
+
+    @Test(expected = NoSuchElementException.class)
+    public void peekOnNewHeapThrows() {
+        Heap h = new Heap();
+
+        h.peek();
+    }
     @Test
     public void testSizeMethod() {
         Heap heap = new Heap();
@@ -74,8 +90,23 @@ public class HeapTest {
         assertFalse(actual);
     }
 
+    //AI REVIEW helped us come up with this one 
+    // pop everything and check the sorted order
+    @Test
+    public void testPopAllReturnsSortedOrder() {
+        Heap heap = new Heap();
+        int[] input = {5, -3, 0, 9, 5, Integer.MAX_VALUE, Integer.MIN_VALUE, 2, -3, 7};
+        int[] expected = {Integer.MIN_VALUE, -3, -3, 0, 2, 5, 5, 7, 9, Integer.MAX_VALUE};
 
+        for (int value : input) {
+            heap.add(value);
+        }
 
+        for (int value : expected) {
+            assertEquals(value, heap.pop());
+        }
+        assertTrue(heap.isEmpty());
+    }
 }
 
    
