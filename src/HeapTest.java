@@ -54,7 +54,25 @@ public class HeapTest {
         h.pop();                      
         assertEquals(7, h.peek());   
 }
+    @Test
+    public void testSizeMethod() {
+        Heap heap = new Heap();
+        heap.add(0);
 
+        int actual = heap.size();
+
+        assertEquals(1, actual);
+    }
+
+    @Test
+    public void testIsEmptyMethod(){
+        Heap heap = new Heap();
+        heap.add(0);
+
+        Boolean actual = heap.isEmpty();
+
+        assertFalse(actual);
+    }
 
 
 
