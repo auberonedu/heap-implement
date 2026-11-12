@@ -1,6 +1,11 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 public class HeapTest {
+    @Test
+    public void newHeapIsEmpty() {
+    Heap heap = new Heap();
+    assertEquals(0, heap.size());
+}
 
 
 
