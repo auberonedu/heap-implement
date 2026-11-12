@@ -35,7 +35,7 @@ public class Heap {
     }
 
     public int pop() {
-        return heap.remove(heap.size()-1);
+        
 
     }
 
@@ -70,7 +70,28 @@ public class Heap {
         }
     }
 
-     private void bubbleDown() {
+     private void bubbleDown(int index) {
+
+        while (2 * index + 1< heap.size()) {
+            int leftChild = 2 * index + 1;
+            int rightChild = 2 * index + 2;
+            int smallerChild = leftChild;
+            if (rightChild < heap.size() && heap.get(rightChild) < heap.get(leftChild)) {
+                smallerChild = rightChild;
+            }
+            if(heap.get(index) > heap.get(smallerChild)) {
+
+                int temp = heap.get(index);
+            heap.set(index, heap.get(smallerChild));
+            heap.set(smallerChild, temp);
+            index = smallerChild;
+            }
+            else {
+                break;
+            }
+            }
+        }
+
         
     }
 
