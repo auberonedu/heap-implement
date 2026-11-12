@@ -23,15 +23,27 @@
  */
 public class Heap {
     // VALUES
-    // capacity
-    // size
-    // instantiated array
+    private int capacity = 10;
+    private int size = 0;
+    int[] heap = new int[capacity];
 
     // METHODS
     // add
+
+
     // pop
+
+
     // peek
+
+
     // size
+
+
     // swap
+
+
     // empty
+
+    
 }
