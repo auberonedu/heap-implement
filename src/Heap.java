@@ -32,33 +32,38 @@ public class Heap {
     return list.get(0);
   }
 
-  public int pop() {
-    int minValue = list.get(0);
+  public void pop() {
     int lastValue = list.remove(list.size() - 1);
 
     if (list.isEmpty()) {
-      return minValue;
+      return;
     }
     if (!list.isEmpty()) {
       lastValue = list.set(0, lastValue);
       int currentIndex = 0;
-      int leftChildIndex = (2 * currentIndex) + 1;
-      int rightChildIndex = (2 * currentIndex) + 2;
-      int smallerChildIndex = leftChildIndex;
-      while (leftChildIndex < list.size()) {
-        if (rightChildIndex < 0 &&list.get(leftChildIndex) < list.get(rightChildIndex)) {
+      while (true) {
+        int leftChildIndex = (2 * currentIndex) + 1;
+        if (leftChildIndex >= list.size()) {
+          break;
+        }
+        int rightChildIndex = (2 * currentIndex) + 2;
+        int smallerChildIndex = leftChildIndex;
+        if (rightChildIndex < list.size() && list.get(rightChildIndex) < list.get(leftChildIndex)) {
           smallerChildIndex = rightChildIndex;
         }
-        if (list.get(currentIndex) > list.get(smallerChildIndex)) {
-        list.set(currentIndex, list.get(smallerChildIndex));
-        list.set(smallerChildIndex, currentIndex);
-          currentIndex = smallerChildIndex;
+
+        if (list.get(currentIndex) <= list.get(smallerChildIndex)) {
+          break;
         }
-        break;
+
+        int childValue = list.get(currentIndex);
+        list.set(currentIndex, list.get(smallerChildIndex));
+        list.set(smallerChildIndex, childValue);
+        currentIndex = smallerChildIndex;
+      }
       }
     }
-    return minValue;
-  }
+  
 
   public int size() {
     return list.size();

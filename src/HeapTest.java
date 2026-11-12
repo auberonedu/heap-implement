@@ -19,8 +19,8 @@ public class HeapTest {
     Heap heap = new Heap();
     heap.add(5);
 
-    int poppedValue = heap.pop();
-    assertEquals(5, poppedValue);
+    assertEquals(5, heap.peek());
+    heap.pop();
 
     assertTrue(heap.isEmpty());
   }
