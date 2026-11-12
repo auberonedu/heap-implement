@@ -50,6 +50,12 @@ public class HeapTest {
 
     assertEquals(3, heap.pop());
     assertEquals(2, heap.size());
+
+    assertEquals(7, heap.pop());
+    assertEquals(10, heap.pop());
+
+    assertTrue(heap.isEmpty());
+    assertEquals(0, heap.size());
 }
 
     // Tests negative number
@@ -119,5 +125,28 @@ public void testEmptyHeap() {
     assertThrows(NoSuchElementException.class, () -> heap.pop());
     assertThrows(NoSuchElementException.class, () -> heap.peek());
 }
+
+// Tests adding and removing elements in mixed order
+@Test
+public void testMixedOperations() {
+    Heap heap = new Heap();
+
+    heap.add(10);
+    heap.add(4);
+    heap.add(7);
+
+    assertEquals(4, heap.pop());
+
+    heap.add(2);
+    heap.add(15);
+
+    assertEquals(2, heap.pop());
+    assertEquals(7, heap.pop());
+    assertEquals(10, heap.pop());
+    assertEquals(15, heap.pop());
+
+    assertTrue(heap.isEmpty());
+    assertEquals(0, heap.size());
+    }
 
 }

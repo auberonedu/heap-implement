@@ -50,7 +50,7 @@ public class HeapRunner {
                 }
 
             } else if (choice.equals("k") || choice.equals("peek")) {
-                if(heap.isEmpty()) {
+                if (heap.isEmpty()) {
                     System.out.println("Heap is empty nothing to peek at");
                 } else {
                     System.out.println("Smallest Value: " + heap.peek());
