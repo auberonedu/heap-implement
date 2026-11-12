@@ -22,5 +22,16 @@
  *  - hold private instance variables
  */
 public class Heap {
+    // VALUES
+    // capacity
+    // size
+    // instantiated array
 
+    // METHODS
+    // add
+    // pop
+    // peek
+    // size
+    // swap
+    // empty
 }
