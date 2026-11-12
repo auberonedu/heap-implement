@@ -76,7 +76,7 @@ public class Heap {
     }
 
     // pop
-    private int pop() {
+    public int pop() {
         if (heap.size() == 0) throw new IllegalStateException("Heap is empty");
         int pop = heap.removeFirst();
         bubbleDown();
