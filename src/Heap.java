@@ -36,7 +36,7 @@ public class Heap {
 
   public void add(int value) {
     data.add(value);
-    siftUp(data.size() -1);
+    siftUp(data.size() - 1);
   }
 
   public int size() {
@@ -48,20 +48,20 @@ public class Heap {
   }
 
   public int peek() {
-    if(isEmpty()) {
+    if (isEmpty()) {
       throw new NoSuchElementException("Heap is empty");
     }
     return data.get(0);
   }
 
   public int pop() {
-    if(isEmpty()) {
+    if (isEmpty()) {
       throw new NoSuchElementException("Heap is empty");
     }
     int root = data.get(0);
-    int last = data.remove(data.size() -1 );
+    int last = data.remove(data.size() - 1 );
 
-    if(!data.isEmpty()) {
+    if (!data.isEmpty()) {
       data.set(0, last);
       siftDown(0);
     }
