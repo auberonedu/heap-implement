@@ -36,6 +36,13 @@ public class Heap {
         int childIndex = heap.size() - 1;
         int parentIndex = (childIndex - 1) / 2;
         while(childIndex > 0 && heap.get(childIndex) < heap.get(parentIndex)){
+            //swap child and parent
+            int temp = heap.get(childIndex);
+            heap.set(childIndex, heap.get(parentIndex));
+            heap.set(parentIndex, temp);
+            //update child and parent indices
+            childIndex = parentIndex;
+            parentIndex = (childIndex - 1) / 2;
      
     }
 }
