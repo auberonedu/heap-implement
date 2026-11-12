@@ -89,5 +89,10 @@ public class Heap {
         }
         return heap.get(0);
      }
+
+     // * Getting the size of the heap O(1)
+     public int size(){
+        return heap.size();
+     }
 }
 
