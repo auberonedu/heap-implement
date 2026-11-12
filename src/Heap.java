@@ -69,7 +69,7 @@ public class Heap {
             if (heap.get(index) < heap.get(smaller)) {
                 break;
             } else {
-                swap (index, smaller);
+                swap(index, smaller);
             }
             index = smaller;
         }
@@ -78,7 +78,9 @@ public class Heap {
     // pop
     public int pop() {
         if (heap.size() == 0) throw new IllegalStateException("Heap is empty");
-        int pop = heap.removeFirst();
+        int pop = heap.getFirst();
+        heap.set(0, heap.getLast());
+        heap.removeLast();
         bubbleDown();
         return pop;
     }
@@ -103,7 +105,7 @@ public class Heap {
 
     // empty
     public boolean empty() {
-        return heap.size() == 0;
+        return heap.isEmpty();
     }
 
 
