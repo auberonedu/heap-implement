@@ -21,6 +21,104 @@
  *  - determine return value and argument types
  *  - hold private instance variables
  */
-public class Heap {
+import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
+public class Heap {
+    private ArrayList<Integer> data;
+
+    public Heap() {
+        data = new ArrayList<>();
+    }
+
+    public void add(int value) {
+        data.add(value);
+        bubbleUp(data.size() - 1);
+    }
+
+    public int pop() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Heap is empty.");
+        }
+
+        int min = data.get(0);
+        int lastValue = data.remove(data.size() - 1);
+
+        if (!isEmpty()) {
+            data.set(0, lastValue);
+            bubbleDown(0);
+        }
+
+        return min;
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Heap is empty.");
+        }
+
+        return data.get(0);
+    }
+
+    public int size() {
+        return data.size();
+    }
+
+    public boolean isEmpty() {
+        return data.isEmpty();
+    }
+
+    private void bubbleUp(int index) {
+        while (index > 0) {
+            int parentIndex = parentIndex(index);
+
+            if (data.get(index) >= data.get(parentIndex)) {
+                break;
+            }
+
+            swap(index, parentIndex);
+            index = parentIndex;
+        }
+    }
+
+    private void bubbleDown(int index) {
+        while (true) {
+            int leftIndex = leftChildIndex(index);
+            int rightIndex = rightChildIndex(index);
+            int smallestIndex = index;
+
+            if (leftIndex < data.size() && data.get(leftIndex) < data.get(smallestIndex)) {
+                smallestIndex = leftIndex;
+            }
+
+            if (rightIndex < data.size() && data.get(rightIndex) < data.get(smallestIndex)) {
+                smallestIndex = rightIndex;
+            }
+
+            if (smallestIndex == index) {
+                break;
+            }
+
+            swap(index, smallestIndex);
+            index = smallestIndex;
+        }
+    }
+
+    private int parentIndex(int index) {
+        return (index - 1) / 2;
+    }
+
+    private int leftChildIndex(int index) {
+        return 2 * index + 1;
+    }
+
+    private int rightChildIndex(int index) {
+        return 2 * index + 2;
+    }
+
+    private void swap(int i, int j) {
+        int temp = data.get(i);
+        data.set(i, data.get(j));
+        data.set(j, temp);
+    }
 }
