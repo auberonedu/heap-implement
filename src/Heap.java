@@ -47,6 +47,7 @@ public class Heap {
         heap.add(value);
         size++;
     }
+    
     //bubbleUp
     private void bubbleUp(int index){
         while(hasParent(index) && parent(index) > heap.get(index)){
@@ -57,7 +58,7 @@ public class Heap {
     }
 
     // pop
-
+    
 
     // swap
     private void swap(int a, int b) {
