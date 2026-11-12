@@ -27,6 +27,19 @@ public class Heap {
     private int size = 0;
     int[] heap = new int[capacity];
 
+    // HELPER METHODS
+    private int getLeftChildIndex(int index) { return 2 * index + 1; }
+    private int getRightChildIndex(int index) { return 2 * index + 2; }
+    private int getParentIndex(int index) { return index / 2; }
+
+    private boolean hasLeftChild(int index) { return getLeftChildIndex(index) < size; }
+    private boolean hasRightChild(int index) { return getLeftChildIndex(index) < size; }
+    private boolean hasParent(int index) { return getParentIndex(index) >= 0; }
+
+    private int left(int index) { return heap[getLeftChildIndex(index)]; }
+    private int right(int index) { return heap[getRightChildIndex(index)]; }
+    private int parent(int index) { return heap[getParentIndex(index)]; }
+
     // METHODS
     // add
 
@@ -45,5 +58,5 @@ public class Heap {
 
     // empty
 
-    
+
 }
