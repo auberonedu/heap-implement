@@ -26,16 +26,13 @@ import java.util.List;
  */
 public class Heap {
     private List<Integer> heap;
-    private int size;
 
     public Heap(){
         this.heap = new ArrayList<>();
-        this.size = 0;
     }
 
     public void add(int element){
         heap.add(element);
-        size++;
 
         int elementIndex = heap.size()-1;
 
@@ -59,7 +56,6 @@ public class Heap {
 
         if(!heap.isEmpty()){
             heap.remove(0);
-            size--;
         }else{
             current = 0;
         }
@@ -72,11 +68,11 @@ public class Heap {
     }
 
     public int size(){
-        return size;
+        return heap.size();
     }
 
     public boolean isEmpty(){
-        if(size>0) return false;
+        if(heap.size()>0) return false;
         else return true;
     }
 
