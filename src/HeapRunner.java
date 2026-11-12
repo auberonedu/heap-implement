@@ -54,6 +54,8 @@ public class HeapRunner {
             } else if (choice.equals("k") || choice.equals("peek")) {
                 // TODO: Call your "peek" method and print the result
                 // Properly handle the case of an empty heap!
+                heap.peek();
+                System.out.println(heap.peek());
 
             } else if (choice.equals("s") || choice.equals("size")) {
                 // TODO: Call your "size" method and print the result
