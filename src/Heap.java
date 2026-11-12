@@ -37,4 +37,32 @@ public class Heap {
     public boolean isEmpty() {
         return heap.isEmpty();
     }
+
+    public void add(int value) {
+        heap.add(value);
+        int index = heap.size() - 1;
+
+        while (index > 0) {
+            int parent = (index - 1) / 2;
+
+            if (heap.get(index) >= heap.get(parent)) {
+                break;
+            }
+
+            int temp = heap.get(index);
+            heap.set(index, heap.get(parent));
+            heap.set(parent, temp);
+
+            index = parent;
+        }
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Heap is empty");
+        }
+
+        return heap.get(0);
+    }
+
 }
