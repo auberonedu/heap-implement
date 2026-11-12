@@ -21,6 +21,8 @@ public class HeapRunner {
         Scanner scanner = new Scanner(System.in);
 
         // TODO: Construct your Heap here.
+        Heap heap = new Heap();
+
 
         System.out.println("=== Heap Tester ===");
 
@@ -40,21 +42,40 @@ public class HeapRunner {
                 }
  
                 // TODO: Call your "add" method on the heap, passing in 'value'.
+                heap.add(value);
                 // TODO: Print message letting user know value was added
+                System.out.println(value + "was added");
  
             } else if (choice.equals("p") || choice.equals("pop")) {
                 // TODO: Call your "pop" method and print the result.
                 // Properly handle the case of an empty heap!
+                try{
+                     int removed = heap.pop();
+                    System.out.print(removed + " was removed from the heap");
+                }catch (IllegalStateException e) {
+                    System.out.println("Cannot pop from an empty heap");
+                }
 
             } else if (choice.equals("k") || choice.equals("peek")) {
                 // TODO: Call your "peek" method and print the result
                 // Properly handle the case of an empty heap!
+               try {
+                    int smallest = heap.peek();
+                    System.out.println("The smallest value is " + smallest);
+
+                } catch (IllegalStateException e) {
+                    System.out.println(e.getMessage());
+
+                }
 
             } else if (choice.equals("s") || choice.equals("size")) {
                 // TODO: Call your "size" method and print the result
+                System.out.println(heap.size());
+          
 
             } else if (choice.equals("e") || choice.equals("empty")) {
                 // TODO: Call your "isEmpty" method and print the result
+                System.out.println(heap.isEmpty());
 
             } else if (choice.equals("q") || choice.equals("quit")) {
                 break;
