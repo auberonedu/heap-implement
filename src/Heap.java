@@ -34,6 +34,7 @@ public class Heap {
     }
 
     public void add(int element){
+        heap.add(element);
         size++;
     }
 
