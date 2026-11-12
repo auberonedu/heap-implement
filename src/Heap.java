@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 /**
  * A min-heap. 
@@ -43,7 +44,7 @@ public class Heap {
     }
     //Implement each of these methods (bubbling up or down respectively): 
     //add(), peek(), pop(), isEmpty(), size()
-    public add(int value) {
+    public void add(int value) {
         heap.add(value);
         bubbleUp(heap.size()-1);
     }
@@ -88,6 +89,16 @@ public class Heap {
 
         }
     }
+
+    public int peek() {
+
+        if (!heap.isEmpty()) {
+            return heap.get(0);
+        }
+        
+        throw new NoSuchElementException("The heap is empty");
+    }
+
 
     //Throw errors for an empty Heap, so pop and peek would throw an exception 
 
