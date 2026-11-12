@@ -47,7 +47,7 @@ public class Heap {
         heap.add(value);
         size++;
     }
-    
+
     //bubbleUp
     private void bubbleUp(int index){
         while(hasParent(index) && parent(index) > heap.get(index)){
@@ -58,7 +58,13 @@ public class Heap {
     }
 
     // pop
-    
+    private int pop() {
+        if (size == 0) throw new IllegalStateException("Heap is empty");
+        int pop = heap.removeFirst();
+        size--;
+        // bubbleDown()
+        return pop;
+    }
 
     // swap
     private void swap(int a, int b) {
@@ -67,13 +73,9 @@ public class Heap {
         heap.set(b, t);
     }
 
-
     // peek
     private int peek() {
-        if (size == 0) {
-            System.out.println("Heap is empty!");
-            return -1;
-        }
+        if (size == 0) throw new IllegalStateException("Heap is empty");
         return heap.getFirst();
     }
 
