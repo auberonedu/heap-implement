@@ -136,4 +136,9 @@ public class Heap {
         data.set(i, data.get(j));
         data.set(j, temp);
     }
+
+    @Override
+    public String toString() {
+        return data.toString();
+    }
 }
