@@ -84,4 +84,17 @@ public class HeapTest {
         Heap heap = new Heap();
         assertTrue(heap.isEmpty());
     }
+
+    @Test 
+    public void testHeapIsEmptyAfterPopping(){
+        Heap heap = new Heap();
+        heap.add(1);
+        heap.add(2);
+        heap.add(3);
+        assertFalse(heap.isEmpty());
+        heap.pop();
+        heap.pop();
+        heap.pop();
+        assertTrue(heap.isEmpty());
+    }
 }

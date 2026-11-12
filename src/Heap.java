@@ -40,11 +40,17 @@ public class Heap {
 
     }
 
-    public void pop(){
-        if(heap.get(0) != null){
+    public int pop(){
+        int current = heap.get(0);
+
+        if(!heap.isEmpty()){
             heap.remove(0);
             size--;
+        }else{
+            current = 0;
         }
+
+        return current;
     }
 
     public int peek(){
