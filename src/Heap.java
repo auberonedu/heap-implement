@@ -51,6 +51,17 @@ public class Heap {
         if(heap.isEmpty()){
             throw new IllegalStateException("Heap is empty");
         }
+        //store the value to be returned
+        int minValue = heap.get(0);
+        //remove the last element and place it at the front
+        int lastIndex = heap.size() - 1;
+        heap.set(0, heap.get(lastIndex));
+        heap.remove(lastIndex);
+        //heapify down
+        int parentIndex = 0;
+        while(true){
+            int leftChildIndex = 2 * parentIndex + 1;   
+
     
     }
 }
