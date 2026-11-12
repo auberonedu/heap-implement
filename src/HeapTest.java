@@ -61,4 +61,36 @@ public class HeapTest {
     assertEquals(-6, heap.peek());
 }
 
+// Tests duplicate values with different numbers
+@Test
+public void testDuplicateWithDifferentNumbers() {
+    Heap heap = new Heap();
+
+    heap.add(5);
+    heap.add(3);
+    heap.add(5);
+
+    assertEquals(3, heap.pop());
+    assertEquals(5, heap.pop());
+    assertEquals(5, heap.pop());
+
+    assertTrue(heap.isEmpty());
+}
+
+// Tests multiple negative numbers
+@Test
+public void testMultipleNegativeNumbers() {
+    Heap heap = new Heap();
+
+    heap.add(-10);
+    heap.add(5);
+    heap.add(-20);
+
+    assertEquals(-20, heap.pop());
+    assertEquals(-10, heap.pop());
+    assertEquals(5, heap.pop());
+
+    assertTrue(heap.isEmpty());
+}
+
 }
