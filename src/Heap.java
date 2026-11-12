@@ -31,6 +31,37 @@ public class Heap {
         this.heap = new ArrayList<>();
     }
 
+    private void swap(int index1, int index2){
+        int temp = heap.get(index1);
+        heap.set(index1, heap.get(index2));
+        heap.set(index2, temp);
+    }
+
+    private void bubbleDown(int elementIndex){
+        int leftChild = 2 * elementIndex + 1;
+        int rightChild = 2 * elementIndex + 2;
+
+        while(leftChild < heap.size()){
+
+            int smallerChild = leftChild;
+
+            if(rightChild < heap.size() &&
+                heap.get(rightChild) < heap.get(leftChild)){
+                smallerChild = rightChild;
+            }
+
+            if(heap.get(elementIndex) > heap.get(smallerChild)){
+                swap(elementIndex, smallerChild);
+                elementIndex = smallerChild;
+
+                leftChild = 2 * elementIndex + 1;
+                rightChild = 2 * elementIndex + 2;
+            }else{
+                break;
+            }
+        }
+    }
+
     public void add(int element){
         heap.add(element);
 
@@ -38,12 +69,9 @@ public class Heap {
 
         while(elementIndex > 0){
             int parent = (elementIndex - 1) / 2;
-            
-            if(element < heap.get(parent)){
-                int smallerElement = heap.get(elementIndex);
-                heap.set(elementIndex, heap.get(parent));
-                heap.set(parent, smallerElement);
 
+            if(heap.get(elementIndex) < heap.get(parent)){
+                swap(elementIndex, parent);
                 elementIndex = parent;
             }else{
                 break;
@@ -52,12 +80,17 @@ public class Heap {
     }
 
     public int pop(){
+        if(heap.isEmpty()){
+            throw new IllegalStateException("Heap is empty");
+        }
+
         int current = heap.get(0);
 
+        int lastElement = heap.remove(heap.size() - 1);
+
         if(!heap.isEmpty()){
-            heap.remove(0);
-        }else{
-            current = 0;
+            heap.set(0, lastElement);
+            bubbleDown(0);
         }
 
         return current;
