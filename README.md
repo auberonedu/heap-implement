@@ -32,6 +32,8 @@ Take its feedback seriously but skeptically. Don't feel like you have to agree w
 
 You may consider starting multiple conversations with multiple AIs. Make sure you keep a log of all the conversations, you will be turning them in.
 
+ai
+
 ## Wave 3: Submission
 
 Make TWO pull requests:

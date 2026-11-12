@@ -6,9 +6,6 @@ public class HeapTest {
     Heap heap = new Heap();
     assertEquals(0, heap.size());
 }
-
-
-
     @Test
     public void CheckNumberOrderTest() {
         Heap heap = new Heap();
