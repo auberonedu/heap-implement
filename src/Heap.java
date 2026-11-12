@@ -31,13 +31,14 @@ public class Heap {
     public void add(int value){
         //insert new integer at the end of the list
         heap.add(value);
+    
+        //if child is less than parent, swap child and parent
+        int childIndex = heap.size() - 1;
+        int parentIndex = (childIndex - 1) / 2;
+        while(childIndex > 0 && heap.get(childIndex) < heap.get(parentIndex)){
+     
     }
-
-
-
- 
-
-   
+}
 
 
 }
