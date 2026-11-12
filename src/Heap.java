@@ -46,11 +46,12 @@ public class Heap {
     public void add(int value){
         heap.add(value);
         size++;
-
-        int index = size - 1;
+    }
+    //bubbleUp
+    private void bubbleUp(int index){
         while(hasParent(index) && parent(index) > heap.get(index)){
             int parentIndex = getParentIndex(index);
-            swap(index, parentIndex); 
+            swap(index, parentIndex);
             index = parentIndex;
         }
     }
@@ -81,6 +82,7 @@ public class Heap {
     }
 
     // empty
+
 
 
 }
