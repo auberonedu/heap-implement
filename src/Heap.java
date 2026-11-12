@@ -1,3 +1,7 @@
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A min-heap. 
  * 
@@ -22,5 +26,39 @@
  *  - hold private instance variables
  */
 public class Heap {
+
+    List<Integer> items = new ArrayList<>();
+
+    public void swap(int indexOne , int indexTwo){
+        int item = items.get(indexOne);
+        items.set(indexOne, items.get(indexTwo));
+        items.set(indexTwo, item);
+
+    }
+    public void addingValue( int item){
+        items.add(item);
+        int newValueIndex = items.size()-1;
+        int parent = (newValueIndex-1) /2;
+
+        int childValue = items.get(newValueIndex);
+        int parentValue = items.get(parent);
+
+        while (newValueIndex > 0 && childValue<parentValue) {
+                swap(newValueIndex, parent);
+                newValueIndex = parent;
+                parent = (newValueIndex-1)/2;
+                childValue = items.get(newValueIndex);
+                parentValue = items.get(parent);
+
+        }
+    }
+    public int peek(){
+        if(items.isEmpty()) throw new IllegalStateException();
+        return items.get(0);
+
+    }
+
+
+
 
 }
