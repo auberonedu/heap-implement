@@ -46,6 +46,7 @@ public class Heap {
     public void add(int value){
         heap.add(value);
         size++;
+        bubbleUp(size - 1);
     }
     //bubbleUp
     private void bubbleUp(int index){
