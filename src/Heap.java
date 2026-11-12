@@ -33,7 +33,7 @@ public class Heap {
     private int getParentIndex(int index) { return index / 2; }
 
     private boolean hasLeftChild(int index) { return getLeftChildIndex(index) < heap.size(); }
-    private boolean hasRightChild(int index) { return getLeftChildIndex(index) < heap.size(); }
+    private boolean hasRightChild(int index) { return getRightChildIndex(index) < heap.size(); }
     private boolean hasParent(int index) { return getParentIndex(index) >= 0; }
 
     private int left(int index) { return heap.get(getLeftChildIndex(index)); }
