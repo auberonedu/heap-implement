@@ -54,9 +54,8 @@ public class Heap {
     return minValue;
   }
 
-  public int size(int size) {
-    size = list.size();
-    return size;
+  public int size() {
+    return list.size();
   }
 
   public int add(int value) {
