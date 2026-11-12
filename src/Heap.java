@@ -54,7 +54,7 @@ public class Heap {
 
     public int peek() {
         if (heap.isEmpty()) {
-        throw new java.util.NoSuchElementException("Heap is empty");
+        throw new NoSuchElementException("Heap is empty");
     }
 
         return heap.get(0);
