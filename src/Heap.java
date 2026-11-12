@@ -43,10 +43,15 @@ public class Heap {
             //update child and parent indices
             childIndex = parentIndex;
             parentIndex = (childIndex - 1) / 2;
-     
+         }
     }
-}
 
-
+    //Popping the front of the heap O(log(n))
+    public int pop(){
+        if(heap.isEmpty()){
+            throw new IllegalStateException("Heap is empty");
+        }
+    
+    }
 }
 
