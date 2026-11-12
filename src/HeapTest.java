@@ -26,4 +26,38 @@ public class HeapTest {
 
         assertEquals(0, actual);
     }
+     @Test
+    public void peekReturnsSmallestWithoutRemoving() {
+        Heap h = new Heap();
+        h.add(5);
+        h.add(2);
+        h.add(8);
+
+        assertEquals(2, h.peek());
+        assertEquals(2, h.peek());
+        assertEquals(3, h.size());
+    }
+
+    @Test
+    public void peekUpdatesAfterAddAndPop() {
+        Heap h = new Heap();
+
+        h.add(10);
+        assertEquals(10, h.peek());   
+
+        h.add(4);
+        assertEquals(4, h.peek());   
+
+        h.add(7);
+        assertEquals(4, h.peek());    
+
+        h.pop();                      
+        assertEquals(7, h.peek());   
 }
+
+
+
+
+}
+
+   

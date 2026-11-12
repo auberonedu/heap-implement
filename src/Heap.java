@@ -117,6 +117,10 @@ public class Heap {
         return heap.isEmpty();
     }
 
+    public int size() {
+        return heap.size();
+    }
+
 
     
 
