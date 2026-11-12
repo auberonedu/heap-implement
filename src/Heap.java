@@ -38,4 +38,11 @@ public class Heap {
     public int size() {
         return data.size();
     }
+
+    public int peek() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Cannot peak into empty heap please.");
+        }
+        return data.get(0);
+    }
 }

@@ -8,4 +8,10 @@ public class HeapTest {
         assertTrue(heap.isEmpty());
         assertEquals(0, heap.size());
     }
+
+    @Test(expected = IllegalStateException.class)
+    public void testPeekEmptyThrowsException() {
+        Heap heap = new Heap();
+        heap.peek();
+    }
 }
