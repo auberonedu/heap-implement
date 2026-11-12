@@ -83,5 +83,11 @@ public class Heap {
     }
 
      //Peeking at the front of the heap without removing the element O(1)
+     public int peek(){
+        if(heap.isEmpty()){
+            throw new IllegalStateException("empty heap");
+        }
+        return heap.get(0);
+     }
 }
 
