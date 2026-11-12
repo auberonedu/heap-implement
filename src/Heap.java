@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.NoSuchElementException;
 
 /**
  * A min-heap. 
@@ -34,13 +34,30 @@ public class Heap {
         bubbleUp(heap.size() -1);
     }
 
-    public int pop() {..
+    public int pop() {
+        if(heap.isEmpty()) {
+            throw new java.util.NoSuchElementException("Heap is Empty");
+        }
+
+        int minimum = heap.get(0);
+        int lastElement = heap.remove(heap.size() -1);
+
+        if(!heap.isEmpty()) {
+            heap.set(0, lastElement);
+            bubbleDown(0);
+        }
+
+        return minimum;
         
 
     }
 
     public int peek() {
-        return heap.get(heap.size()-1);
+        if (heap.isEmpty()) {
+        throw new java.util.NoSuchElementException("Heap is empty");
+    }
+
+        return heap.get(0);
     }
 
     public int size() {
@@ -95,4 +112,3 @@ public class Heap {
         
     }
 
-}
