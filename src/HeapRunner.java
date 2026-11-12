@@ -46,13 +46,13 @@ public class HeapRunner {
                 try {
                     System.out.println(heap.pop());
                 } catch (Exception e) {
-                    System.out.println(e);
+                    System.out.println("Heap is empty!");
                 }
             } else if (choice.equals("k") || choice.equals("peek")) {
                 try {
                     System.out.println(heap.peek());
                 } catch (Exception e) {
-                    System.out.println(e);
+                    System.out.println("Heap is empty!");
                 }
             } else if (choice.equals("s") || choice.equals("size")) {
                 System.out.println(heap.size());
