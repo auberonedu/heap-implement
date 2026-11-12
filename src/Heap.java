@@ -34,7 +34,7 @@ public class Heap {
 
     private boolean hasLeftChild(int index) { return getLeftChildIndex(index) < heap.size(); }
     private boolean hasRightChild(int index) { return getRightChildIndex(index) < heap.size(); }
-    private boolean hasParent(int index) { return getParentIndex(index) > 0; }
+    private boolean hasParent(int index) { return index != 0; }
 
     private int left(int index) { return heap.get(getLeftChildIndex(index)); }
     private int right(int index) { return heap.get(getRightChildIndex(index)); }
@@ -77,7 +77,7 @@ public class Heap {
 
     // pop
     public int pop() {
-        if (heap.size() == 0) throw new IllegalStateException("Heap is empty");
+        if (empty()) throw new IllegalStateException("Heap is empty");
         int pop = heap.getFirst();
         heap.set(0, heap.getLast());
         heap.removeLast();
@@ -94,7 +94,7 @@ public class Heap {
 
     // peek
     public int peek() {
-        if (heap.size() == 0) throw new IllegalStateException("Heap is empty");
+        if (empty()) throw new IllegalStateException("Heap is empty");
         return heap.getFirst();
     }
 
