@@ -1,3 +1,5 @@
+import java.util.List;
+import java.util.ArrayList;
 /**
  * A min-heap. 
  * 
@@ -23,9 +25,8 @@
  */
 public class Heap {
     // VALUES
-    private int capacity = 10;
     private int size = 0;
-    int[] heap = new int[capacity];
+    List<Integer> heap = new ArrayList();
 
     // HELPER METHODS
     private int getLeftChildIndex(int index) { return 2 * index + 1; }
@@ -36,9 +37,9 @@ public class Heap {
     private boolean hasRightChild(int index) { return getLeftChildIndex(index) < size; }
     private boolean hasParent(int index) { return getParentIndex(index) >= 0; }
 
-    private int left(int index) { return heap[getLeftChildIndex(index)]; }
-    private int right(int index) { return heap[getRightChildIndex(index)]; }
-    private int parent(int index) { return heap[getParentIndex(index)]; }
+    private int left(int index) { return heap.get(getLeftChildIndex(index)); }
+    private int right(int index) { return heap.get(getRightChildIndex(index)); }
+    private int parent(int index) { return heap.get(getParentIndex(index)); }
 
     // METHODS
     // add
@@ -51,9 +52,6 @@ public class Heap {
 
 
     // size
-
-
-    // swap
 
 
     // empty
