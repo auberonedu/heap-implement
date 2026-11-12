@@ -36,10 +36,9 @@ public class Heap {
     int lastValue = list.remove(list.size() - 1);
 
     if (list.isEmpty()) {
-    return minValue;
+      return minValue;
 
-    
-}
+    }
 
     if (!list.isEmpty()) {
       lastValue = list.set(0, lastValue);
@@ -72,6 +71,9 @@ public class Heap {
       int parentIndex = (currentIndex - 1) / 2;
 
       if (list.get(currentIndex) < list.get(parentIndex)) {
+        int childValue = list.get(currentIndex);
+        list.set(currentIndex, list.get(parentIndex));
+        list.set(parentIndex, childValue);
         currentIndex = parentIndex;
       } else {
         break;
