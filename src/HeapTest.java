@@ -5,7 +5,14 @@ public class HeapTest {
 
     // ----- Tests for add() ----- //
     @Test 
-    public void testOneElementIsAddedToHeap(){
+    public void testAddOneElementToHeap(){
+        Heap heap = new Heap();
+        heap.add(1);
+        assertEquals(1, heap.size());
+    }
+
+    @Test 
+    public void testAddMultipleElementToHeapWithMinAtTop(){
         Heap heap = new Heap();
         heap.add(1);
         assertEquals(1, heap.size());
@@ -13,7 +20,7 @@ public class HeapTest {
 
     // ----- Tests for pop() ----- //
     @Test 
-    public void testOneElementIsRemovedFromHeap(){
+    public void testPopOneElementFromHeap(){
         Heap heap = new Heap();
         heap.add(1);
         heap.pop();
@@ -21,7 +28,30 @@ public class HeapTest {
     }
 
     // ----- Tests for peek() ----- //
+    @Test 
+    public void testPeeksShowsOneElement(){
+        Heap heap = new Heap();
+        heap.add(127);
+        assertEquals(127, heap.peek());
+    }
 
+    @Test 
+    public void testPeekShowsMinElementWithMultipleElementsAddedAfterMin(){
+        Heap heap = new Heap();
+        heap.add(127);
+        heap.add(130);
+        heap.add(140);
+        assertEquals(127, heap.peek());
+    }
+
+    @Test 
+    public void testPeekShowsMinElementWithMultipleElementsAdded(){
+        Heap heap = new Heap();
+        heap.add(130);
+        heap.add(127);
+        heap.add(140);
+        assertEquals(127, heap.peek());
+    }
 
     // ----- Tests for size() ----- //
 
