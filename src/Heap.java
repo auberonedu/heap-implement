@@ -50,9 +50,7 @@ public class Heap {
         }
         break;
       }
-
     }
-
     return minValue;
   }
 
@@ -61,9 +59,22 @@ public class Heap {
     return size;
   }
 
-  // public int add() {
+  public int add(int value) {
+    list.add(value);
+    int currentIndex = list.size() - 1;
 
-  // }
+    while (currentIndex > 0) {
+      int parentIndex = (currentIndex - 1) / 2;
+
+      if (list.get(currentIndex) < list.get(parentIndex)) {
+        currentIndex = parentIndex;
+      } else {
+        break;
+      }
+    }
+    return value;
+  }
+
   public boolean isEmpty() {
     if (list.size() == 0) {
       return true;
