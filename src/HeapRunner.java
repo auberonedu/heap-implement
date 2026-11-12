@@ -21,6 +21,8 @@ public class HeapRunner {
         Scanner scanner = new Scanner(System.in);
 
         // TODO: Construct your Heap here.
+        Heap heap = new Heap();
+
 
         System.out.println("=== Heap Tester ===");
 
