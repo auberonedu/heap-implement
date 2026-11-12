@@ -44,10 +44,7 @@ public class Heap {
   }
 
   public boolean isEmpty() {
-    if(data.isEmpty()) {
-        return true;
-    }
-    return false;
+    return data.isEmpty();
   }
 
   public int peek() {
