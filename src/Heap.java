@@ -41,7 +41,7 @@ public class Heap {
 
     public int peek() {
         if (isEmpty()) {
-            throw new IllegalStateException("Cannot peak into empty heap please.");
+            throw new IllegalStateException("Cannot peek into empty heap please.");
         }
         return data.get(0);
     }
