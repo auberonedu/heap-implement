@@ -19,4 +19,15 @@ public class HeapTest {
         assertEquals(3,heap.size());
         assertFalse(heap.isEmpty());
     }
+
+    @Test
+    public void popReturnsMinAndRemovesIt() {
+        Heap heap = new Heap();
+        heap.add(5);
+        heap.add(1);
+        heap.add(3);
+        assertEquals(1, heap.pop());
+        assertEquals(2, heap.size());
+        assertEquals(3, heap.peek());
+    }
 }
