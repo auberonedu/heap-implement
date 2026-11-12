@@ -97,7 +97,8 @@ public class Heap {
     }
 
     public int peek(){
-        return heap.get(0);
+        if(!heap.isEmpty()) return heap.get(0);
+        else throw new IllegalStateException("Heap is empty");
     }
 
     public int size(){
@@ -105,8 +106,7 @@ public class Heap {
     }
 
     public boolean isEmpty(){
-        if(heap.size()>0) return false;
-        else return true;
+        return heap.isEmpty();
     }
 
     public String printHeap(){
