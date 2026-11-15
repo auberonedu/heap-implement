@@ -65,4 +65,46 @@ public class Heap {
         return heap.get(0);
     }
 
+    public int pop() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Heap is empty");
+        }
+
+        int min = heap.get(0);
+        int last = heap.remove(heap.size() - 1);
+
+        if (!isEmpty()) {
+            heap.set(0, last);
+            int index = 0;
+
+            while (true) {
+                int left = 2 * index + 1;
+                int right = 2 * index + 2;
+                int smallest = index;
+
+                if (left < heap.size() &&
+                        heap.get(left) < heap.get(smallest)) {
+                    smallest = left;
+                }
+
+                if (right < heap.size() &&
+                        heap.get(right) < heap.get(smallest)) {
+                    smallest = right;
+                }
+
+                if (smallest == index) {
+                    break;
+                }
+
+                int temp = heap.get(index);
+                heap.set(index, heap.get(smallest));
+                heap.set(smallest, temp);
+
+                index = smallest;
+            }
+        }
+
+        return min;
+    }
+
 }
