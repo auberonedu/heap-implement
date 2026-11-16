@@ -49,11 +49,7 @@ public class Heap {
             if (heap.get(index) >= heap.get(parent)) {
                 break;
             }
-
-            int temp = heap.get(index);
-            heap.set(index, heap.get(parent));
-            heap.set(parent, temp);
-
+            swap(index, parent);
             index = parent;
         }
     }
@@ -97,10 +93,7 @@ public class Heap {
                     break;
                 }
 
-                int temp = heap.get(index);
-                heap.set(index, heap.get(smallest));
-                heap.set(smallest, temp);
-
+                swap(index, smallest);
                 index = smallest;
             }
         }
@@ -108,4 +101,10 @@ public class Heap {
         return min;
     }
 
+    private void swap(int i, int j) {
+        int temp = heap.get(i);
+        heap.set(i, heap.get(j));
+        heap.set(j, temp);
+
+    }
 }
