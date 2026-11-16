@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * A min-heap.
  * 
@@ -25,6 +26,7 @@ import java.util.List;
  */
 public class Heap {
     private final List<Integer> heap;
+
     public Heap() {
         heap = new ArrayList<>();
     }
